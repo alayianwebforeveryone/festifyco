@@ -13,7 +13,7 @@ function RootLayout ({children}) {
   <body  className={` antialiased bg-[#EBE2F5]  overflow-x-hidden w-full `}>
     <Menu />
     {/* <main className=' pt-32'>{children}</main> */}
-   <Login/>
+   {/* <Login/> */}
     {children}
     <Footer />
 

@@ -22,7 +22,7 @@ const Menu = () => {
     },
     {
       title: "Explore Event",
-      path: "/exploreEvent",
+      path: "/exploreevent",
     },
     {
       title: "Services",
@@ -40,7 +40,7 @@ const Menu = () => {
 
   return (
     <>
-      <nav className="fixed w-full z-10  ">
+      <nav className="fixed w-full z-10 bg-[#EBE2F5] ">
         <div className="flex items-center justify-between container mx-auto sm:px-4  py-3">
           {/* Logo */}
           <Link href="/" className="cursor-pointer">
