@@ -20,7 +20,8 @@ const SignUp = () => {
       const userData = await authService.createAccount(data);
       if (userData) {
         const userData = await authService.getCurrentUser();
-        if (userData) dispatch(login(userData));
+        if (userData) 
+          dispatch(login(userData));
         router.push("/");
       }
     } catch (error) {
@@ -139,16 +140,12 @@ const SignUp = () => {
 
                 {/* Submit Button */}
                 <Button
-                  type="Submit"
-                  disabled={!(isValid && dirty)}
-                  className={`z-[3] mt-4 items-center bg-[#9747FF] font-semibold text-center px-5 sm:px-10 justify-center overflow-hidden relative text-[#FFFFFF] uppercase py-3 md:py-4 rounded-full mx-auto ${
-                    !(isValid && dirty)
-                      ? "opacity-50 cursor-not-allowed"
-                      : "cursor-pointer"
-                  }`}
-                >
-                  Sign up
-                </Button>
+                    type="submit"
+                    disabled={!(isValid && dirty)}
+                    
+                    className={`z-[3] mt-6 items-center bg-[#9747FF] font-semibold text-center px-5 sm:px-10 justify-center overflow-hidden relative text-[#FFFFFF] uppercase py-3 md:py-4 rounded-full mx-auto ${!(isValid && dirty) ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+                      }`}
+                  >SignUp</Button>
               </Form>
             </div>
           )}

@@ -1,9 +1,11 @@
 "use client"
 import React from "react";
 import { Provider } from "react-redux";
+import { store } from "./redux /store/store";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
-import{ store } from "./redux /store/store"; // Import the Redux store
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import "./globals.css";
 
 function RootLayout({ children }) {

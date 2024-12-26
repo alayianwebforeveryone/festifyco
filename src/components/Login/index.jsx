@@ -67,7 +67,7 @@ const Login = () => {
               {error && <p className="text-red-600">{error}</p>}
               <Form
                 onSubmit={handleSubmit}
-                className="flex flex-col gap-4 p-4 sm:p-6 rounded-lg items-center mx-auto mt-4"
+                className="flex flex-col gap-4 p-4 sm:p-6 rounded-lg   mt-4"
               >
                 {/* Email Field */}
                 <div className="flex w-full flex-col mb-4">
@@ -121,15 +121,12 @@ const Login = () => {
 
                 {/* Submit Button */}
                 <Button
-                  type="submit"
-                  disabled={!(isValid && dirty)}
-                  text="Login"
-                  className={`z-[3] mt-6 items-center bg-[#9747FF] font-semibold text-center px-5 sm:px-10 justify-center overflow-hidden relative text-[#FFFFFF] uppercase py-3 sm:py-4 rounded-full mx-auto ${
-                    !(isValid && dirty)
-                      ? "opacity-50 cursor-not-allowed"
-                      : "cursor-pointer"
-                  }`}
-                />
+                    type="submit"
+                    disabled={!(isValid && dirty)}
+
+                    className={`z-[3] mt-6 items-center bg-[#9747FF] font-semibold text-center px-5 sm:px-10 justify-center overflow-hidden relative text-[#FFFFFF] uppercase py-3 sm:py-4 rounded-full mx-auto ${!(isValid && dirty) ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+                      }`}
+                  >Login</Button>
               </Form>
             </div>
           )}

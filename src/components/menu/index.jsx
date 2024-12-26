@@ -1,56 +1,23 @@
 "use client";
 
 import Image from "next/image";
-import authService from "@/appwrite/auth";
 import Link from "next/link";
+import authService from "@/appwrite/auth";
 import { usePathname } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import logo from "../../../public/images/logo.svg";
 import NavComp from "./NavComp";
 import { CiMenuBurger } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Common/Button";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { login } from "@/app/redux /Slices/authSlice";
-import { logout } from "@/app/redux /Slices/authSlice";
 
 const Menu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const path = usePathname();
-  const dispatch = useDispatch();
-  const [isLogedIn, setIsLoggedIn] = useState(false);
-
-  const logoutHandler = ()=>{
-    authService.logout().
-    then(()=>{
-      dispatch(logout())
-      console.log("logout successfully")
-    })
-  .catch((error)=>{
-    console.log("logout error", error)
-  })
-  }
-
-useEffect(()=>{
-      authService.getCurrentUser().
-      then((userData)=>{
-        if(userData){
-        dispatch(login(userData))
-        console.log(userData)
-        setIsLoggedIn(true)
-        }
-        else{
-          console.log("not login show from menu")
-          setIsLoggedIn(false)
-        }
-      })
-      .catch((error)=>{
-        console.log("gettting crrent user goes catch side", error)
-        setIsLoggedIn(false)
-      })
-},[login, logout])
-
-
+  const [isLogedIn, setIslogIn] = useState(false);
+  const dispatch = useDispatch;
   const navLinks = [
     {
       title: "Home",
@@ -69,15 +36,21 @@ useEffect(()=>{
       path: "/contact",
     },
   ];
-
   const toggleMenu = () => {
     setShowMenu((prev) => !prev);
   };
 
-  // const currentUserData = useSelector((state) => state.auth.userData.name);
-  // console.log("user data from state ", currentUserData)
-
-
+  useEffect(() => {
+    authService.getCurrentUser().then((userData) => {
+      if (userData) {
+        setIslogIn(true);
+        dispatch(login(userData));
+      } else {
+        console.log("not logged in");
+        setIslogIn(false);
+      }
+    });
+  }, []);
 
   return (
     <>
@@ -135,14 +108,12 @@ useEffect(()=>{
               <Link href="/login" className="cursor-pointer">
                 <Button className=" bg-[#60B0F4]">Login</Button>
               </Link>
-              <Link href="/signUp" className="cursor-pointer">
+              <Link href="/signup" className="cursor-pointer">
                 <Button className=" bg-[#9747FF]">Sign up</Button>
               </Link>
             </div>
           )}
-           
-         </div>
-       
+        </div>
 
         {/* Mobile Menu */}
         {showMenu && (
@@ -161,24 +132,20 @@ useEffect(()=>{
             ))}
 
             <div className="flex flex-col items-center space-y-3 justify-center py-4">
-              <Link href="/" onClick={toggleMenu} >
-                <Button text="Login" />
+              <Link href="/login" onClick={toggleMenu}>
+                <Button className=" bg-[#60B0F4]">Login </Button>
               </Link>
-              <Link href="/login" onClick={toggleMenu} >
-                <Button text="SignUp" colorClass="bg-[#9747FF]" />
+              <Link href="/signup" onClick={toggleMenu}>
+                <Button text="SignUp" className="bg-[#9747FF]">
+                  SignUp{" "}
+                </Button>
               </Link>
             </div>
           </div>
-         
         )}
       </nav>
     </>
   );
-}
-
-
-
-  
-
+};
 
 export default Menu;

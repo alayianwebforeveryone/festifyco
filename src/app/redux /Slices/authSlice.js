@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { LogOut } from 'lucide-react';
 
 const initialState = {
   status: false,
