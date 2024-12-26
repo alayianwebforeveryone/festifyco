@@ -1,19 +1,42 @@
 "use client";
 
 import Image from "next/image";
+import authService from "@/appwrite/auth";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import React, { useState } from "react";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import logo from "../../../public/images/logo.svg";
 import NavComp from "./NavComp";
 import { CiMenuBurger } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Common/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "@/app/redux /Slices/authSlice";
 
 const Menu = () => {
-  const router = useRouter();
   const [showMenu, setShowMenu] = useState(false);
   const path = usePathname();
+  const dispatch = useDispatch();
+  const [isLogedIn, setIsLoggedIn] = useState(false);
+
+useEffect(()=>{
+      authService.getCurrentUser().
+      then((userData)=>{
+        if(userData){
+        dispatch(login(userData))
+        setIsLoggedIn(true)
+        }
+        else{
+          console.log("not login show from menu")
+          setIsLoggedIn(false)
+        }
+      })
+      .catch((error)=>{
+        console.log("gettting crrent user goes catch side", error)
+        setIsLoggedIn(false)
+      })
+},[])
+
 
   const navLinks = [
     {
@@ -37,6 +60,11 @@ const Menu = () => {
   const toggleMenu = () => {
     setShowMenu((prev) => !prev);
   };
+
+  // const currentUserData = useSelector((state) => state.auth.userData.name);
+  // console.log("user data from state ", currentUserData)
+
+
 
   return (
     <>
@@ -79,15 +107,42 @@ const Menu = () => {
           </div>
 
           {/* Buttons */}
-          <div className="hidden sm:flex space-x-2">
-            <Link href="/" className="cursor-pointer">
-              <Button text="Login" />
-            </Link>
-            <Link href="/login" className="cursor-pointer">
-              <Button text="SignUp" colorClass="bg-[#9747FF]" />
-            </Link>
-          </div>
-        </div>
+
+          {
+            isLogedIn ? (
+               <div className="hidden sm:flex space-x-2">
+               <Link href="/dashboard" className="cursor-pointer">
+                 <Button> Dashboard</Button> 
+               </Link>
+             
+               <Link href="/signUp" className="cursor-pointer">
+                 <Button>
+                   Logout
+                 </Button>
+               </Link>
+              
+             
+              </div>
+              
+            ):(
+              <div className="hidden sm:flex space-x-2">
+              <Link href="/login" className="cursor-pointer">
+                <Button>Sign up</Button> 
+              </Link>
+            
+              <Link href="/signUp" className="cursor-pointer">
+                <Button>
+                  Login
+                </Button>
+              </Link>
+             
+            
+              </div>
+            )
+          }
+           
+         </div>
+       
 
         {/* Mobile Menu */}
         {showMenu && (
@@ -114,10 +169,16 @@ const Menu = () => {
               </Link>
             </div>
           </div>
+         
         )}
       </nav>
     </>
   );
-};
+}
+
+
+
+  
+
 
 export default Menu;

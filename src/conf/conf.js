@@ -5,7 +5,6 @@ const conf  = {
     appwriteCollectionId: String(process.env.NEXT_PUBLIC_APPWRITE_API_COLLECTION_ID),
     
 }
-console.log("conf",conf)
 
 
 
