@@ -1,6 +1,8 @@
 import React from "react";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import "./globals.css";
 function RootLayout({ children }) {
   return (
