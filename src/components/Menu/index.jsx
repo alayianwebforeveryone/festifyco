@@ -5,50 +5,38 @@ import authService from "@/appwrite/auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import logo from "../../../public/images/logo.svg";
+import logo from "../../../Assets/Images/logo.png";
 import NavComp from "./NavComp";
 import { CiMenuBurger } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Common/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "@/app/redux /Slices/authSlice";
-import { logout } from "@/app/redux /Slices/authSlice";
 
 const Menu = () => {
   const [showMenu, setShowMenu] = useState(false);
   const path = usePathname();
   const dispatch = useDispatch();
-  const [isLogedIn, setIsLoggedIn] = useState(false);
+  const isLoggedIn = useSelector((state) => state.auth.status);
 
-  const logoutHandler = ()=>{
-    authService.logout().
-    then(()=>{
-      dispatch(logout())
-      console.log("logout successfully")
-    })
-  .catch((error)=>{
-    console.log("logout error", error)
-  })
-  }
 
-useEffect(()=>{
-      authService.getCurrentUser().
-      then((userData)=>{
-        if(userData){
-        dispatch(login(userData))
-        console.log(userData)
-        setIsLoggedIn(true)
-        }
-        else{
-          console.log("not login show from menu")
-          setIsLoggedIn(false)
+ 
+
+  useEffect(() => {
+    authService
+      .getCurrentUser()
+      .then((userData) => {
+        if (userData) {
+          dispatch(login(userData));
+          console.log(userData);
+        } else {
+          console.log("User not logged in");
         }
       })
-      .catch((error)=>{
-        console.log("gettting crrent user goes catch side", error)
-        setIsLoggedIn(false)
-      })
-},[login, logout])
+      .catch((error) => {
+        console.log("Error fetching current user", error);
+      });
+  }, [dispatch]);
 
 
   const navLinks = [
@@ -58,15 +46,15 @@ useEffect(()=>{
     },
     {
       title: "Explore Event",
-      path: "/exploreevent",
+      path: "/pages/exploreevent",
     },
     {
       title: "Services",
-      path: "/services",
+      path: "/pages/services",
     },
     {
       title: "Contact",
-      path: "/contact",
+      path: "/pages/contact",
     },
   ];
 
@@ -74,8 +62,7 @@ useEffect(()=>{
     setShowMenu((prev) => !prev);
   };
 
-  // const currentUserData = useSelector((state) => state.auth.userData.name);
-  // console.log("user data from state ", currentUserData)
+
 
 
 
@@ -121,22 +108,23 @@ useEffect(()=>{
 
           {/* Buttons */}
 
-          {isLogedIn ? (
+          {isLoggedIn ? (
             <div className="hidden sm:flex space-x-2">
-              <Link href="/logout" className="cursor-pointer">
-                <Button className=" bg-[#60B0F4]">Logout</Button>
+              <Link href="/pages/logout" className="cursor-pointer">
+                <Button 
+                className=" text-white bg-[#60B0F4]">Logout</Button>
               </Link>
-              <Link href="/dashboard" className="cursor-pointer">
-                <Button className=" bg-[#9747FF]">Dashboard</Button>
+              <Link href="/pages/dashboard" className="cursor-pointer">
+                <Button className=" text-white  bg-[#9747FF]">Dashboard</Button>
               </Link>
             </div>
           ) : (
             <div className="hidden sm:flex space-x-2">
-              <Link href="/login" className="cursor-pointer">
-                <Button className=" bg-[#60B0F4]">Login</Button>
+              <Link href="/pages/login" className="cursor-pointer">
+                <Button className=" text-white bg-[#60B0F4]">Login</Button>
               </Link>
-              <Link href="/signUp" className="cursor-pointer">
-                <Button className=" bg-[#9747FF]">Sign up</Button>
+              <Link href="/pages/signUp" className="cursor-pointer">
+                <Button className="text-white bg-[#9747FF]">Sign up</Button>
               </Link>
             </div>
           )}

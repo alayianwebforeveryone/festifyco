@@ -67,7 +67,7 @@ const QuoteCarousel = () => {
       </Slider>
 
       {/* Custom Arrows */}
-      <div className="absolute bottom-[-24] sm:bottom-[-20]  left-0 right-0 flex justify-center z-10">
+      <div className="absolute bottom-[-70px]  left-0 right-0 flex justify-center z-10">
         <button
           className="bg-[#9747FF] text-white p-2 rounded-full mx-2"
           onClick={handlePrev} // Use the custom prev arrow handler
@@ -75,7 +75,7 @@ const QuoteCarousel = () => {
           <FiChevronLeft size={24} />
         </button>
         <button
-          className="bg-[#9747FF] text-white p-2 rounded-full mx-2"
+          className="bg-[#9747FF] text-white p-2 rounded-full mx-4"
           onClick={handleNext} // Use the custom next arrow handler
         >
           <FiChevronRight size={24} />

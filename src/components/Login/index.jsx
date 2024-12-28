@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { login as authLogin } from "@/app/redux /Slices/authSlice";
 import authService from "@/appwrite/auth";
-
+import { toast } from "sonner"
 const Login = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
@@ -23,7 +23,7 @@ const Login = () => {
         const userData = await authService.getCurrentUser();
         console.log("userData outer", userData);
         if (userData) dispatch(authLogin(userData));
-        console.log("userData inner", userData);
+        toast("You have been logged in  successfully")
         router.push("/");
       }
     } catch (error) {

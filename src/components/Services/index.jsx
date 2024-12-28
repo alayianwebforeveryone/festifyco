@@ -1,10 +1,11 @@
 import React from 'react'
+import ServicesCarousel from './ServicesCarousel'
 
 const Services = () => {
   return (
 
     <>
-     <div className=' pt-32'>Services</div>
+  <ServicesCarousel/>
     </>
    
   )

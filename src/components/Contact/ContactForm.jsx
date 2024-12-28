@@ -26,7 +26,7 @@ const ContactForm = () => {
 
   return (
     <>
-      <div className="pt-40">
+      <div className="">
         <Formik
           initialValues={{
             name: '',
@@ -43,10 +43,10 @@ const ContactForm = () => {
           }}
         >
           {({ handleSubmit, isValid, dirty }) => (
-            <div className="max-w-sm sm:max-w-md lg:max-w-lg border-4 mx-auto flex flex-col text-center py-10 bg-white border-[#9747FF] rounded-2xl">
+            <div className=" border-4  flex flex-col text-center py-6 bg-white border-[#9747FF] rounded-2xl">
               <h1 className="font-bold text-[1.5rem] sm:text-[2rem] leading-[2rem] sm:leading-[2.4375rem] text-[#9747FF]">SignUp</h1>
 
-              <Form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 sm:p-6 rounded-lg items-center mx-auto mt-4">
+              <Form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 sm:p-6 rounded-lg items-center  mt-4">
                 {/* Name Field */}
                 
                 <div className="flex w-full flex-col mb-4">
@@ -60,7 +60,7 @@ const ContactForm = () => {
                         {...field}
                         type="text"
                         required
-                        className="p-3 w-full sm:w-[10rem] md:w-[17rem] lg:w-[17.875rem] border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
+                        className="p-3 w-full  border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
                       />
                     )}
                   </Field>
@@ -78,7 +78,7 @@ const ContactForm = () => {
                         {...field}
                         type="email"
                         required
-                        className="p-3 w-full sm:w-[10rem] md:w-[17rem] lg:w-[17.875rem] border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
+                        className="p-3 w-full  border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
                       />
                     )}
                   </Field>
@@ -96,7 +96,7 @@ const ContactForm = () => {
                         {...field}
                         type="text"
                         required
-                        className="p-3 w-full sm:w-[10rem] md:w-[17rem]  lg:w-[17.875rem] border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
+                        className="p-3 w-full  border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
                       />
                     )}
                   </Field>
@@ -114,7 +114,7 @@ const ContactForm = () => {
                         {...field}
                         required
                         rows={4}
-                        className="p-3 w-full sm:w-[10rem] md:w-[17rem]  lg:w-[17.875rem] border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
+                        className="p-3 w-full  border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
                       />
                     )}
                   </Field>
@@ -126,7 +126,7 @@ const ContactForm = () => {
                   <Button
                     type="submit"
                     disabled={!(isValid && dirty)}
-                    className={`z-[3] mt-6 items-center bg-[#9747FF] font-semibold text-center px-5 sm:px-10 justify-center overflow-hidden relative text-[#FFFFFF] uppercase py-3 md:py-4 rounded-full mx-auto ${!(isValid && dirty) ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
+                    className={`z-[3] mt-2  items-center bg-[#9747FF] font-semibold text-center px-5 sm:px-10 justify-center overflow-hidden relative text-[#FFFFFF] uppercase py-3 md:py-4 rounded-full mx-auto ${!(isValid && dirty) ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
                       }`}
                   >
                     SignUp

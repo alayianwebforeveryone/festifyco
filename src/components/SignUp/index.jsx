@@ -8,6 +8,7 @@ import Button from "../Common/Button";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { login } from "@/app/redux /Slices/authSlice";
+import { toast } from "sonner";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const SignUp = () => {
         const userData = await authService.getCurrentUser();
         if (userData) 
           dispatch(login(userData));
+        toast("You have been register succesfully")
         router.push("/");
       }
     } catch (error) {

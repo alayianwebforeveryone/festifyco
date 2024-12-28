@@ -9,13 +9,16 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ContactForm from "../Contact/ContactForm";
 
+
 import authService from "@/appwrite/auth";
 import { login, logout } from "@/app/redux /Slices/authSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
+import Contact from "../Contact";
 export const Home = () => {
-  const [isLog, setIsLog] = useState(false);
+  
   const dispatch = useDispatch();
+  const isLogedIn = useSelector((state) => state.auth.status);
 
   useEffect(() => {
     authService.getCurrentUser().then((userData) => {
@@ -32,16 +35,16 @@ export const Home = () => {
 
   return (
     <>
-      <div className="pt-8 sm:pt-16 px-4  sm:px-12  ">
+      <div className="pt-6 sm:pt-16 px-4  sm:px-12  ">
         {/* ====================Banner Section =========== */}
-        <div className="pt-24 flex flex-col-reverse sm:items:center   sm:flex-row justify-between sm:gap-12   ">
-          <div data="banner" className=" sm:w-[60%] lg:w-[40%] md:w-[55%]  ">
+        <div className="pt-24  flex flex-col-reverse sm:items:center justify-between   sm:flex-row   ">
+          <div data="banner" className=" sm:w-[60%] lg:w-[44%] md:w-[55%] sm:pl-24 ">
             <div>
-              <h1 className=" text-[35px] lg:text-[35px] text-center sm:text-left sm:text-[20px] md:text-[25px] font-extrabold text-[#9747FF]">
+              <h1 className=" text-[25px] mb-8   text-center sm:text-left sm:text-[20px] md:text-[35px] font-extrabold text-[#9747FF]">
                 Creating Moments, Crafting Memories
               </h1>
             </div>
-            <p className="text-[20] sm:text-[15] md:text-[15] lg:text-[20] leading-[40px] sm:leading-[20px] md:leading-[25px] lg:leading-[35px]">
+            <p className="text-[20] text-justify sm:text-left sm:text-[15] md:text-[15] lg:text-[20px] leading-[40px] sm:leading-[20px] md:leading-[25px] lg:leading-[44px]">
               At Testify Co., we turn your vision into reality with seamless
               event planning and unforgettable experiences. From corporate
               gatherings to dreamy weddings, our expert team ensures every
@@ -50,7 +53,7 @@ export const Home = () => {
               corporate gatherings to dreamy weddings, our expert team ensures
               every detail is perfect.
             </p>
-            {isLog ? (
+            { isLogedIn ? (
               <Button
                 type="Submit"
                 className="px-4 bg-[#9747FF] text-white  rounded-full  mt-4"
@@ -61,27 +64,29 @@ export const Home = () => {
               <Link href = "/signUp">
                 <Button
                   type="Submit"
-                  className="px-4 bg-[#9747FF] text-white  rounded-full  mt-4"
+                  className="px-12 text-xl font-bold  py-4 bg-[#9747FF] text-white  rounded-full  mt-4"
                 >
                   Get Started
                 </Button>
               </Link>
             )}
           </div>
-          <div className="sm:w-[40%] lg:w-[50%] md:w-[50%] w-full  ">
-            <Image className="w-full  " src={homeBanner} alt="banner" />
+          <div className="sm:w-[40%] lg:w-[40%] md:w-[50%] w-full    ">
+            <Image
+              layout="intrinsic"
+            className=" " src={homeBanner} alt="banner" />
           </div>
         </div>
         {/* ==============card section ======================= */}
-        <CatogoriesCard className="mt-36" />
+        <CatogoriesCard  />
         {/*================== QuoteCarouse=========== */}
-        <div className="container mx-auto max-w-7xl  py-12 ">
+        <div className="container mx-auto max-w-7xl  py-12 mt-48  ">
           <h1 className="text-[2.25rem] text-[#9747FF] font-bold text-center mb-8">
             We Provide Value to Our Client
           </h1>
           <QuoteCarousel />
         </div>
-        <ContactForm />
+        <Contact />
       </div>
     </>
   );
