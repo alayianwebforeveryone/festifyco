@@ -51,17 +51,19 @@ const items = [
 export function AppSidebar() {
   const pathname = usePathname();
   return (
-    <Sidebar className=" w-[25%]  lg:w-[20%]">
-      <SidebarContent className="bg-[#C7B1E2]  text-white  ">
-        <SidebarGroup className=" xl:pl-10 pr-0  pl-2 ">
-          <Link href="/">
-            <div className=" xl:mt-24 mt-8 px-2   xl:pl-8">
-              <Image src={logo} alt="festifyco" />
-            </div>
-          </Link>
+    <Sidebar className="  ">
+      <SidebarHeader className= "bg-[#C7B1E2]">
+        <Link href="/">
+          <div className=" xl:mt-24 mt-8 px-2   xl:pl-8">
+            <Image src={logo} alt="festifyco" />
+          </div>
+        </Link>
+      </SidebarHeader>
+      <SidebarContent className=" bg-[#C7B1E2] ">
+        <SidebarGroup className=" xl:pl-6 pr-0  pl-2 ">
           <SidebarGroupLabel className="p-0 mt-24   ">
             <Link
-              className="flex w-full   xl:gap-8 rounded-lg text-sm  xl:text-xl font-bold   xl:font-extrabold    items-center pl-3 text-white py-5 bg-[#60B0F4] "
+              className="flex w-full  gap-4   rounded-lg text-sm  xl:text-xl font-bold   xl:font-extrabold    items-center px-3  text-white py-5 bg-[#60B0F4] "
               href="/pages/dashboard"
             >
               <Image

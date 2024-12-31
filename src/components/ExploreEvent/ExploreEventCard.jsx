@@ -20,24 +20,24 @@ const ExploreEventCard = ({ eventCardData }) => {
         <figure className="w-full h-[168px] flex justify-center items-center overflow-hidden rounded-[16px] ">
           <Image
             src={eventCardData.image}
-            alt={eventCardData.name}
-            layout="intrinsic"
+            alt={eventCardData.Event_Name}
+           
          
             width={400}
           height={100}
           />
         </figure>
         <div className=" flex flex-col space-y-3 mt-2 ">
-          <h2 className="text-center font-bold">{eventCardData.name}</h2>
+          <h2 className="text-center font-bold">{eventCardData.Event_Name}</h2>
 
-          <div className=" flex justify-between">
-          <div className=" flex gap-2">
+          <div className=" flex  my-2 justify-center">
+          <div className=" flex gap-2 justify-center">
             <Image className="block md:hidden lg:block" src={dateIcon} alt="date" height={20} width={20} />
-            <span>{eventCardData.dateTime.date}</span>
+            <span>{eventCardData.DateTime}</span>
             </div>
            
              
-              <span>{eventCardData.dateTime.time}</span>
+              
            
           </div>
           <div className=" flex justify-between">

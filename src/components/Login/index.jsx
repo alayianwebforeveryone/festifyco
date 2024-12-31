@@ -7,8 +7,8 @@ import Button from "../Common/Button";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { login as authLogin } from "@/app/redux /Slices/authSlice";
-import authService from "@/appwrite/auth";
-import { toast } from "sonner"
+import authService from "@/app/pages/appwrite/auth";
+import { toast } from "sonner";
 const Login = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
@@ -23,7 +23,7 @@ const Login = () => {
         const userData = await authService.getCurrentUser();
         console.log("userData outer", userData);
         if (userData) dispatch(authLogin(userData));
-        toast("You have been logged in  successfully")
+        toast("You have been logged in  successfully");
         router.push("/");
       }
     } catch (error) {
@@ -121,12 +121,16 @@ const Login = () => {
 
                 {/* Submit Button */}
                 <Button
-                    type="submit"
-                    disabled={!(isValid && dirty)}
-
-                    className={`z-[3] mt-6 items-center bg-[#9747FF] font-semibold text-center px-5 sm:px-10 justify-center overflow-hidden relative text-[#FFFFFF] uppercase py-3 sm:py-4 rounded-full mx-auto ${!(isValid && dirty) ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
-                      }`}
-                  >Login</Button>
+                  type="submit"
+                  disabled={!(isValid && dirty)}
+                  className={`z-[3] mt-6 items-center bg-[#9747FF] font-semibold text-center px-5 sm:px-10 justify-center overflow-hidden relative text-[#FFFFFF] uppercase py-3 sm:py-4 rounded-full mx-auto ${
+                    !(isValid && dirty)
+                      ? "opacity-50 cursor-not-allowed"
+                      : "cursor-pointer"
+                  }`}
+                >
+                  Login
+                </Button>
               </Form>
             </div>
           )}

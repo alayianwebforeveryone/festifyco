@@ -14,10 +14,8 @@ function RootLayout({ children }) {
     <html lang="en">
       <body className={`antialiased bg-[#EBE2F5] overflow-x-hidden w-full`}>
         <Provider store={store}>
-          <div className="">
             <Menu />
-          </div>
-          <div >{children}</div>
+          <div  className=" ">{children}</div>
           <Toaster />
           <Footer />
         </Provider>

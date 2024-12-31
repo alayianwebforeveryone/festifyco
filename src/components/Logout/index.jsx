@@ -3,7 +3,7 @@ import React from "react";
 import Button from "../Common/Button";
 import { logout } from "@/app/redux /Slices/authSlice";
 import { useRouter } from "next/navigation";
-import authService from "../../appwrite/auth.js";
+import authService from "../../app/pages/appwrite/auth.js";
 import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 import Link from "next/link";
@@ -16,7 +16,7 @@ const Logout = ({type}) => {
     authService
       .logout()
       .then(() => {
-        toast("You have been logged out successfully");
+        toast("You  have been logged out successfully");
         dispatch(logout());
         router.push("/");
         console.log("Logout successfully");
@@ -28,7 +28,12 @@ const Logout = ({type}) => {
 
   return (
     <>
-      <div className={`pt-40  ${type === "dashboard" ? "ml-96  w-full xl:mt-24" : "" }`}  >
+      <div
+        className={` w-[40%] mx-auto 
+          ${type === "dashboard" ? "pt-36" : "pt-72"}
+          
+        }`}
+      >
         <div className="border-2 rounded-[20px] bg-white   mx-auto  p-8   border-[#9747FF]">
           <p className="text-center text-2xl font-bold text-[#9747FF]">
             Are you sure you want to Log out{" "}

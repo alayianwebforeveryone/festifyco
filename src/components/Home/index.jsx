@@ -9,14 +9,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ContactForm from "../Contact/ContactForm";
 
-
-import authService from "@/appwrite/auth";
+import authService from "@/app/pages/appwrite/auth";
 import { login, logout } from "@/app/redux /Slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import Contact from "../Contact";
 export const Home = () => {
-  
   const dispatch = useDispatch();
   const isLogedIn = useSelector((state) => state.auth.status);
 
@@ -38,7 +36,10 @@ export const Home = () => {
       <div className="pt-6 sm:pt-16 px-4  sm:px-12  ">
         {/* ====================Banner Section =========== */}
         <div className="pt-24  flex flex-col-reverse sm:items:center justify-between   sm:flex-row   ">
-          <div data="banner" className=" sm:w-[60%] lg:w-[44%] md:w-[55%] sm:pl-24 ">
+          <div
+            data="banner"
+            className=" sm:w-[60%] lg:w-[44%] md:w-[55%] sm:pl-24 "
+          >
             <div>
               <h1 className=" text-[25px] mb-8   text-center sm:text-left sm:text-[20px] md:text-[35px] font-extrabold text-[#9747FF]">
                 Creating Moments, Crafting Memories
@@ -53,7 +54,7 @@ export const Home = () => {
               corporate gatherings to dreamy weddings, our expert team ensures
               every detail is perfect.
             </p>
-            { isLogedIn ? (
+            {isLogedIn ? (
               <Button
                 type="Submit"
                 className="px-4 bg-[#9747FF] text-white  rounded-full  mt-4"
@@ -61,7 +62,7 @@ export const Home = () => {
                 Try Our Service
               </Button>
             ) : (
-              <Link href = "/signUp">
+              <Link href="/signUp">
                 <Button
                   type="Submit"
                   className="px-12 text-xl font-bold  py-4 bg-[#9747FF] text-white  rounded-full  mt-4"
@@ -74,11 +75,14 @@ export const Home = () => {
           <div className="sm:w-[40%] lg:w-[40%] md:w-[50%] w-full    ">
             <Image
               layout="intrinsic"
-            className=" " src={homeBanner} alt="banner" />
+              className=" "
+              src={homeBanner}
+              alt="banner"
+            />
           </div>
         </div>
         {/* ==============card section ======================= */}
-        <CatogoriesCard  />
+        <CatogoriesCard />
         {/*================== QuoteCarouse=========== */}
         <div className="container mx-auto max-w-7xl  py-12 mt-48  ">
           <h1 className="text-[2.25rem] text-[#9747FF] font-bold text-center mb-8">
@@ -90,6 +94,4 @@ export const Home = () => {
       </div>
     </>
   );
-
- 
 };

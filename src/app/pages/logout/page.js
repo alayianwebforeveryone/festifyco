@@ -3,7 +3,7 @@ import React from 'react'
 
 const LogoutPage = () => {
   return (
-    <><Logout   /></>
+    <><Logout /></>
   )
 }
 

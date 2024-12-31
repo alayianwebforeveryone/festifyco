@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import authService from "@/appwrite/auth";
+import authService from "@/app/pages/appwrite/auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -19,16 +19,12 @@ const Menu = () => {
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state) => state.auth.status);
 
-
- 
-
   useEffect(() => {
     authService
       .getCurrentUser()
       .then((userData) => {
         if (userData) {
           dispatch(login(userData));
-          console.log(userData);
         } else {
           console.log("User not logged in");
         }
@@ -37,7 +33,6 @@ const Menu = () => {
         console.log("Error fetching current user", error);
       });
   }, [dispatch]);
-
 
   const navLinks = [
     {
@@ -61,10 +56,6 @@ const Menu = () => {
   const toggleMenu = () => {
     setShowMenu((prev) => !prev);
   };
-
-
-
-
 
   return (
     <>
@@ -111,8 +102,7 @@ const Menu = () => {
           {isLoggedIn ? (
             <div className="hidden sm:flex space-x-2">
               <Link href="/pages/logout" className="cursor-pointer">
-                <Button 
-                className=" text-white bg-[#60B0F4]">Logout</Button>
+                <Button className=" text-white bg-[#60B0F4]">Logout</Button>
               </Link>
               <Link href="/pages/dashboard" className="cursor-pointer">
                 <Button className=" text-white  bg-[#9747FF]">Dashboard</Button>
@@ -128,9 +118,7 @@ const Menu = () => {
               </Link>
             </div>
           )}
-           
-         </div>
-       
+        </div>
 
         {/* Mobile Menu */}
         {showMenu && (
@@ -149,24 +137,18 @@ const Menu = () => {
             ))}
 
             <div className="flex flex-col items-center space-y-3 justify-center py-4">
-              <Link href="/" onClick={toggleMenu} >
+              <Link href="/" onClick={toggleMenu}>
                 <Button text="Login" />
               </Link>
-              <Link href="/login" onClick={toggleMenu} >
+              <Link href="/login" onClick={toggleMenu}>
                 <Button text="SignUp" colorClass="bg-[#9747FF]" />
               </Link>
             </div>
           </div>
-         
         )}
       </nav>
     </>
   );
-}
-
-
-
-  
-
+};
 
 export default Menu;

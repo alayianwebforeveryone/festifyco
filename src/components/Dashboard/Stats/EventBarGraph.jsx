@@ -4,75 +4,43 @@ import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 
 const data = [
   {
-    name: 'Mon',
-    Primaryschool: 24,
-    SecondaySchool: 39,
-    SchoolStaff: 30, // No spaces in the key
-    amt: 100,
+    name: '2025',
+    "Purchased Event": 24,
+    "Registered Event": 39,
+  
   },
   {
-    name: 'Tue',
-    Primaryschool: 24,
-    SecondaySchool: 39,
-    SchoolStaff: 30,
-    amt: 100,
+    name: '2026',
+    "Purchased Event": 24,
+    "Registered Event": 39,
+   
   },
   {
-    name: 'Wed',
-    Primaryschool: 24,
-    SecondaySchool: 39,
-    SchoolStaff: 30,
-    amt: 100,
+    name: '2027',
+    "Purchased Event": 24,
+    "Registered Event": 39,
+    
   },
   {
-    name: 'Thur',
-    Primaryschool: 24,
-    SecondaySchool: 39,
-    SchoolStaff: 30,
-    amt: 100,
+    name: '2028',
+    "Purchased Event": 24,
+    "Registered Event": 39,
+   
+   
   },
   {
-    name: 'Fri',
-    Primaryschool: 24,
-    SecondaySchool: 39,
-    SchoolStaff: 30,
-    amt: 100,
+    name: '2029',
+    "Purchased Event": 24,
+    "Registered Event": 39,
+   
   },
   {
-    name: 'Mon',
-    Primaryschool: 24,
-    SecondaySchool: 39,
-    SchoolStaff: 30, // No spaces in the key
-    amt: 100,
+    name: '2030',
+    "Purchased Event": 24,
+    "Registered Event": 39,
+   
   },
-  {
-    name: 'Tue',
-    Primaryschool: 24,
-    SecondaySchool: 39,
-    SchoolStaff: 30,
-    amt: 100,
-  },
-  {
-    name: 'Wed',
-    Primaryschool: 24,
-    SecondaySchool: 39,
-    SchoolStaff: 30,
-    amt: 100,
-  },
-  {
-    name: 'Thur',
-    Primaryschool: 24,
-    SecondaySchool: 39,
-    SchoolStaff: 30,
-    amt: 100,
-  },
-  {
-    name: 'Fri',
-    Primaryschool: 24,
-    SecondaySchool: 39,
-    SchoolStaff: 30,
-    amt: 100,
-  },
+  
 ];
 
 const  EventBarGraph =()=> {
@@ -95,9 +63,8 @@ const  EventBarGraph =()=> {
           <YAxis />
           <Tooltip />
           <Legend />
-          <Bar dataKey="Primaryschool" fill="#00B074" />
-          <Bar dataKey="SecondaySchool" fill="#BA98F5" />
-          <Bar dataKey="SchoolStaff" fill="#6948A3" /> {/* Fixed the dataKey */}
+          <Bar dataKey="Purchased Event" fill="#9747FF" />
+          <Bar dataKey="Registered Event" fill="#60B0F4" />
         </BarChart>
       </ResponsiveContainer>
     );

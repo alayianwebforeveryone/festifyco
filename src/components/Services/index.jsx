@@ -1,4 +1,5 @@
 import React from 'react'
+import PlanCrad from './PlanCrad'
 import ServicesCarousel from './ServicesCarousel'
 
 const Services = () => {
@@ -6,6 +7,7 @@ const Services = () => {
 
     <>
   <ServicesCarousel/>
+  <PlanCrad />
     </>
    
   )

@@ -22,25 +22,27 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased ${cn({ "debug-screens": process.env.NODE_ENV === "development" })}    bg]`}
+    
+      <div
+        className={`${geistSans.variable} ${geistMono.variable} bg-[#EBE2F5] antialiased ${cn({ "debug-screens": process.env.NODE_ENV === "development" })}    bg]`}
       >
-        <SidebarProvider>
+        <SidebarProvider
+          style={{
+            "--sidebar-width": "15rem",
+            "--sidebar-width-mobile": "20rem",
+          }}
+        >
           <AppSidebar />
-          <main className="w-full ">
+          <main className=" ml-8      w-full ">
             <SidebarTrigger />
-            <DashboardHeader/>
-            <div className= " ml-[20%]  2xl:ml-[30%] ">
+            <DashboardHeader />
+            <div className="mt-72">
               {children}
-
             </div>
 
           </main>
-
         </SidebarProvider>
 
-      </body>
-    </html>
+      </div>
   );
 }

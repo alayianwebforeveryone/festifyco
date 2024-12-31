@@ -1,9 +1,12 @@
+import ViewEvents from "@/components/Dashboard/View Events";
 
 
 const ViewEventPage = () =>{
     return (
       <>
-        <div className="ml-32 ">this  is view Event page</div>
+        <div className=" ">
+          <ViewEvents/>
+        </div>
     
       </>
     );
