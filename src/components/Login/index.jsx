@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import Button from "../Common/Button";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { login as authLogin } from "@/app/redux /Slices/authSlice";
+import { login as authLogin } from "@/app/redux/Slices/authSlice";
 import authService from "@/app/pages/appwrite/auth";
 import { toast } from "sonner";
 const Login = () => {

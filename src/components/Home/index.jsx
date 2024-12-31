@@ -10,7 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import ContactForm from "../Contact/ContactForm";
 
 import authService from "@/app/pages/appwrite/auth";
-import { login, logout } from "@/app/redux /Slices/authSlice";
+import { login, logout } from "@/app/redux/Slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import Contact from "../Contact";

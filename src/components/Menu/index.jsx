@@ -11,7 +11,7 @@ import { CiMenuBurger } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Common/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "@/app/redux /Slices/authSlice";
+import { login } from "@/app/redux/Slices/authSlice";
 
 const Menu = () => {
   const [showMenu, setShowMenu] = useState(false);

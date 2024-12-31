@@ -2,7 +2,7 @@
 import React from "react";
 import { Toaster } from "@/components/ui/sonner";
 import { Provider } from "react-redux";
-import { store } from "./redux /store/store";
+import { store } from "./redux/store/store";
 import Footer from "../components/Footer";
 import Menu from "../components/Menu";
 import "slick-carousel/slick/slick.css";
@@ -14,8 +14,8 @@ function RootLayout({ children }) {
     <html lang="en">
       <body className={`antialiased bg-[#EBE2F5] overflow-x-hidden w-full`}>
         <Provider store={store}>
-            <Menu />
-          <div  className=" ">{children}</div>
+          <Menu />
+          <div className=" ">{children}</div>
           <Toaster />
           <Footer />
         </Provider>

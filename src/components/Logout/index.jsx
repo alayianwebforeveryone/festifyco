@@ -1,14 +1,14 @@
 "use client";
 import React from "react";
 import Button from "../Common/Button";
-import { logout } from "@/app/redux /Slices/authSlice";
+import { logout } from "@/app/redux/Slices/authSlice";
 import { useRouter } from "next/navigation";
 import authService from "../../app/pages/appwrite/auth.js";
 import { useDispatch } from "react-redux";
 import { toast } from "sonner";
 import Link from "next/link";
 
-const Logout = ({type}) => {
+const Logout = ({ type }) => {
   const dispatch = useDispatch();
   const router = useRouter();
 
