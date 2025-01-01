@@ -1,32 +1,27 @@
-export const personData =[
-  {
-    "name": "Alice Johnson",
-    "eventName": "Tech Conference 2024",
-    "passId": "P@55-ALC-1039"
-  },
-  {
-    "name": "Bob Smith",
-    "eventName": "Tech Conference 2024",
-    "passId": "P@55-BSM-2048"
-  },
-  {
-    "name": "Carol Davis",
-    "eventName": "Tech Conference 2024",
-    "passId": "P@55-CRL-3091"
-  },
-  {
-    "name": "David Miller",
-    "eventName": "Tech Conference 2024",
-    "passId": "P@55-DML-4076"
-  },
-  {
-    "name": "Emma Wilson",
-    "eventName": "Tech Conference 2024",
-    "passId": "P@55-EMW-5023"
-  },
 
-]
 
+ export const services = [
+  {
+    serviceName:'Event Listing',
+    description:'Browse free events happening online or onsite and attent your favourite event',
+  },
+  {
+    serviceName:'User Event Management',
+    description:'Register your event and let us handle the rest!',
+  },
+  {
+    serviceName:'Venu Selection',
+    description:'Choose the perfect venue from our curated list.',
+  },
+  {
+    serviceName:'Customize Service',
+    description:'You can make your own offer feel free to contact.',
+  },
+  {
+    serviceName:'Catering and Food Menu',
+    description:'Delight your guests with customized catering menus.',
+  }
+ ]
 
 export const planData =  [
   {
@@ -45,27 +40,27 @@ export const planData =  [
   {
     "planName": "Premium Plan",
     "venues": [
-      "Handle 100 number of  People.  ",
+      "Handle 500 number of  People.  ",
       "Indoor",
       "Sound System.",
       "Power back up."
     ],
     "menu": [
-      "Refreshment.",
-      "Chose 4 items of Food from menu."
+      "Lunch",
+      "Chose 6 items of Food from menu."
     ]
   },
   {
     "planName": "Exclusive Plan",
     "venues": [
-      "Handle 100 number of  People.  ",
+      "Handle 800 number of  People.  ",
       "Indoor",
       "Sound System.",
       "Power back up."
     ],
     "menu": [
-      "Refreshment.",
-      "Chose 4 items of Food from menu."
+      "Dinner.",
+      "Chose 8 items of Food from menu."
     ]
   }
 ]
