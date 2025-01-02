@@ -1,9 +1,10 @@
+import CreateEvent from "@/components/Dashboard/CreateEvent";
 
 
 const CreateEventsPage = () =>{
     return (
       <>
-        <div className="ml-32 ">this  is create logout page</div>
+<CreateEvent/>
     
       </>
     );

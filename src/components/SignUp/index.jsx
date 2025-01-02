@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { login } from "@/app/redux/Slices/authSlice";
 import { toast } from "sonner";
+import Link from "next/link";
 
 const SignUp = () => {
   const dispatch = useDispatch();
@@ -152,6 +153,17 @@ const SignUp = () => {
                   SignUp
                 </Button>
               </Form>
+
+              {/* Login Link */}
+              <p className="mt-4 text-gray-600">
+                Already have an account?{" "}
+                <Link
+                  href="/pages/login"
+                  className="text-[#9747FF] font-bold underline"
+                >
+                  Login here
+                </Link>
+              </p>
             </div>
           )}
         </Formik>

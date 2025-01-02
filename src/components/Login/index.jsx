@@ -9,10 +9,18 @@ import { useDispatch } from "react-redux";
 import { login as authLogin } from "@/app/redux/Slices/authSlice";
 import authService from "@/app/pages/appwrite/auth";
 import { toast } from "sonner";
+import Link from "next/link";
+import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
+
 const Login = () => {
   const dispatch = useDispatch();
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility
   const router = useRouter();
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prevState) => !prevState);
+  };
 
   const login = async (data) => {
     setError("");
@@ -23,7 +31,7 @@ const Login = () => {
         const userData = await authService.getCurrentUser();
         console.log("userData outer", userData);
         if (userData) dispatch(authLogin(userData));
-        toast("You have been logged in  successfully");
+        toast("You have been logged in successfully");
         router.push("/");
       }
     } catch (error) {
@@ -45,6 +53,7 @@ const Login = () => {
       .matches(/[0-9]/, "Password must contain at least one number")
       .required("Password is required"),
   });
+
   return (
     <>
       <div className="pt-40">
@@ -67,7 +76,7 @@ const Login = () => {
               {error && <p className="text-red-600">{error}</p>}
               <Form
                 onSubmit={handleSubmit}
-                className="flex flex-col gap-4 p-4 sm:p-6 rounded-lg   mt-4"
+                className="flex flex-col gap-4 p-4 sm:p-6 rounded-lg mt-4"
               >
                 {/* Email Field */}
                 <div className="flex w-full flex-col mb-4">
@@ -95,7 +104,7 @@ const Login = () => {
                 </div>
 
                 {/* Password Field */}
-                <div className="flex w-full flex-col mb-4">
+                <div className="flex w-full flex-col mb-4 relative">
                   <label
                     htmlFor="password"
                     className="text-[1rem] sm:text-[1.25rem] leading-[1.25rem] sm:leading-[1.5rem] text-left mb-2 font-bold"
@@ -104,12 +113,24 @@ const Login = () => {
                   </label>
                   <Field name="password">
                     {({ field }) => (
-                      <input
-                        {...field}
-                        type="password"
-                        required
-                        className="p-3 w-full border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
-                      />
+                      <div className="relative">
+                        <input
+                          {...field}
+                          type={showPassword ? "text" : "password"}
+                          required
+                          className="p-3 w-full border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
+                        />
+                        <span
+                          className="absolute right-3 top-3 cursor-pointer"
+                          onClick={togglePasswordVisibility}
+                        >
+                          {showPassword ? (
+                            <AiOutlineEyeInvisible size={24} />
+                          ) : (
+                            <AiOutlineEye size={24} />
+                          )}
+                        </span>
+                      </div>
                     )}
                   </Field>
                   <ErrorMessage
@@ -132,6 +153,17 @@ const Login = () => {
                   Login
                 </Button>
               </Form>
+
+              {/* Signup Link */}
+              <p className="mt-4 text-gray-600">
+                Don't have an account?{" "}
+                <Link
+                  href="/pages/signUp"
+                  className="text-[#9747FF] font-bold underline"
+                >
+                  Sign up here
+                </Link>
+              </p>
             </div>
           )}
         </Formik>

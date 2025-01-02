@@ -66,7 +66,7 @@ const Menu = () => {
             <Image
               src={logo}
               alt="logo"
-              className="h-6 w-[9rem] cursor-pointer"
+              className=" w-[9rem] cursor-pointer"
             />
           </Link>
 

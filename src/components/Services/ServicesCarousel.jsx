@@ -4,11 +4,14 @@ import Slider from 'react-slick';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'; // For custom arrows
 import homeBanner from '../../../Assets/Images/homeBanner.png'
 import Button from '../Common/Button';
-import { eventCardData } from '../../json/event.js'
+import { services } from '../../json/event.js'
+import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 const ServicesCarousel = () => {
   const [quotes, setQuotes] = useState([]);
   const sliderRef = useRef(null); // Ref to access the Slider component
+  const isLogedIn = useSelector((state) => state.auth.status);
 
   // Slick settings
   const settings = {
@@ -49,7 +52,7 @@ const ServicesCarousel = () => {
     <div className="text-black w-[80%] mx-auto pt-60">
       {/* Slick Carousel */}
       <Slider ref={sliderRef} {...settings}>
-        {eventCardData.map((data, index) => (
+        {services.map((data, index) => (
           <div key={index} className="relative p-4 flex mx-auto md:p-6">
             <div
               className="text-center w-full h-[300px] sm:h-[350px] md:h-[388px] bg-black/20 flex flex-col items-center justify-between gap-4 p-4 sm:gap-4 sm:p-6 border-2 border-[#9747FF] rounded-xl"
@@ -60,15 +63,19 @@ const ServicesCarousel = () => {
                 backgroundRepeat: 'no-repeat',
               }}
             >
-              <div className=' mt-12 space-y-2'>
-                <p className="text-lg  md:text-2xl font-bold">{data.name}</p>
+              <div className=' mt-12 space-y-5'>
+                <p className="text-lg  md:text-2xl font-bold">{data.serviceName}</p>
                 <p className="text-sm md:text-base font-semibold px-4 sm:px-6">
                   - {data.description}
                 </p>
               </div>
-              <Button className="bg-[#60B0F4] absolute bottom-20 text-white px-4 py-2 mt-4 rounded-lg">
-                Explore Event
-              </Button>
+                
+                 <Link  href={isLogedIn ?'/pages/dashboard/view_events':'/pages/signUp' } className=' flex items-center justify-center'>
+                 <Button className="bg-[#60B0F4] absolute bottom-20 text-white px-4 py-2 mt-4 rounded-lg">
+                   Explore Event
+                 </Button>
+                 </Link>
+              
             </div>
 
           </div>
