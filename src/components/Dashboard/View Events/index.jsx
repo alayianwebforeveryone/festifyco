@@ -6,7 +6,8 @@ import availableEvents from "@/app/pages/appwrite/availableEvents";
 const ViewEvents = () => {
   const [tableData, setTableData] = useState(null);
   console.log("table data", tableData);
-  useEffect(async () => {
+  useEffect( () => {
+    async function fetchData() {
     try {
       const data = await availableEvents.getAllEvents();
       console.log(data);
@@ -14,14 +15,14 @@ const ViewEvents = () => {
     } catch (error) {
       throw error;
     }
-  }, []);
+  }
+  fetchData();
+}, []);
 
   return (
     <div>
-      <div>
         
-        <TableComp   eventTableData={tableData} />
-      </div>
+        <TableComp  type= "availabelEvents"  eventTableData={tableData} />
     </div>
   );
 };

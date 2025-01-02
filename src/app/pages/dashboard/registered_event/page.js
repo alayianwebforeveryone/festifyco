@@ -1,9 +1,12 @@
+import RegisteredEvents from "@/components/Dashboard/Registered Event";
 
 
 const RegisteredEventsPage = () =>{
     return (
       <>
-        <div className="ml-32 ">this  is registered Event page</div>
+        <div className=" ">
+          <RegisteredEvents/>
+        </div>
     
       </>
     );

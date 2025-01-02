@@ -1,12 +1,12 @@
+import RegisteredEvents from "@/components/Dashboard/Registered Event";
 
 
-const CreateEventsPage = () =>{
-    return (
-      <>
-        <div className="ml-32 ">this  is create logout page</div>
-    
-      </>
-    );
-  }
-  export default CreateEventsPage;
-  
+const CreateEventsPage = () => {
+  return (
+    <>
+      < RegisteredEvents />
+
+    </>
+  );
+}
+export default CreateEventsPage;

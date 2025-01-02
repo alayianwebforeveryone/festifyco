@@ -42,10 +42,10 @@ const Contact = () => {
           </h1>
 
           {/* Content Section */}
-          <div className="flex flex-col sm:flex-row justify-between    items-center  p-4 rounded-md">
+          <div className="flex flex-col sm:flex-row justify-between  2xl:gap-48   items-center  p-4 rounded-md">
             {/* FAQ Section */}
-            <div className=" sm:w-[40%]  flex flex-col   rounded-md sm:p-6">
-              <h1 className="text- text-[1rem] sm:text-[2rem] font-extrabold text-[#9747FF] sm:mb-16">
+            <div className=" sm:w-[50%] w-[90%]  flex flex-col   rounded-md p-6">
+              <h1 className="text- text-[1rem] sm:text-[2rem] font-extrabold text-[#9747FF] mb-16">
                 Frequently Asked Questions (FAQs)
               </h1>
               <div className="max-w-full w-[658px] mx-auto ">
@@ -65,7 +65,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Form Section */}
-            <div className=" = sm:w-[40%] rounded-md sm:p-6">
+            <div className=" = sm:w-[50%] w-[80%] md:mt-24  rounded-md sm:p-6">
               <ContactForm />
             </div>
           </div>

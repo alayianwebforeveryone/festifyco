@@ -12,17 +12,20 @@ import {
 
 export function FilterTableData({ setFilterType }) {
   return (
-    <Select onValueChange={setFilterType}>
-      <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Filter Data" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectGroup>
-          <SelectLabel>Filter</SelectLabel>
-          <SelectItem value="past">Passed</SelectItem>
-          <SelectItem value="upcoming">Upcoming</SelectItem>
-        </SelectGroup>
-      </SelectContent>
-    </Select>
+    
+      <Select onValueChange={setFilterType}>
+        <SelectTrigger className="w-[180px] ">
+          <SelectValue placeholder="Filter Data" />
+        </SelectTrigger>
+        <SelectContent className= "absolute "  >
+          <SelectGroup>
+            <SelectLabel>Filter</SelectLabel>
+            <SelectItem value="all">All</SelectItem>
+            <SelectItem value="past">Passed</SelectItem>
+            <SelectItem value="upcoming">Upcoming</SelectItem>
+          </SelectGroup>
+        </SelectContent>
+      </Select>
+    
   );
 }

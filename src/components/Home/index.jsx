@@ -23,10 +23,9 @@ export const Home = () => {
       if (userData) {
         console.log("get current user data  from home", userData);
         dispatch(login(userData));
-        setIsLog(true);
       } else {
         dispatch(logout());
-        console.log("No user found");
+        
       }
     });
   }, []);
