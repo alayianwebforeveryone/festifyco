@@ -47,7 +47,7 @@ const TicketCard = ({ isVisible, close, eventCardData }) => {
     <div
       onClick={handleClose}
       id="container"
-      className="fixed inset-0 z-40 bg-black/25 flex justify-center items-center"
+      className="fixed     marker: inset-0 z-40 bg-black/25 flex justify-center items-center"
     >
       <div className="bg-[#E2D0FA] w-[90%] lg:w-[20%] h-[50%] rounded-xl hideScrollbar">
         {/* Header */}
