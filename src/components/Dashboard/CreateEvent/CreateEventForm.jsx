@@ -1,18 +1,26 @@
 "use client";
 
 import React, { useState } from "react";
-
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Button from "@/components/Common/Button";
+import SinglePlanCard from "./SinglePlanCard";
+
+
+
 
 const CreateEventForm = () => {
-  const [error, setError] = useState("");
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogDetails, setDialogDetails] = useState("");
+
+  const plans = [
+    { value: "Basic Plan", label: "Basic Plan", details: "Details about the Basic Plan." },
+    { value: "Premium Plan", label: "Premium Plan", details: "Details about the Premium Plan." },
+    { value: "Exclusive Plan", label: "Exclusive Plan", details: "Details about the Royal Plan." },
+  ];
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string()
-      .required("Name is required")
-      .max(40, "Name must be 40 characters or less"),
+    name: Yup.string().required("Name is required").max(40, "Name must be 40 characters or less"),
     email: Yup.string()
       .matches(
         /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
@@ -23,23 +31,26 @@ const CreateEventForm = () => {
     phone: Yup.string()
       .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
       .required("Phone number is required"),
-    event: Yup.string()
-      .required("Event name is required")
-      .max(100, "Event name must be 100 characters or less"),
-  
+    event: Yup.string().required("Event name is required").max(100, "Event name must be 100 characters or less"),
     duration: Yup.string().required("Duration is required"),
-    date: Yup.date()
-      .required("Date is required")
-      .typeError("Invalid date format"),
-    attendance: Yup.string()
-      .required("Attendance is required"),
-      
+    date: Yup.date().required("Date is required").typeError("Invalid date format"),
+    attendance: Yup.string().required("Attendance is required"),
     plan: Yup.string().required("Please select a plan"),
     moreInfo: Yup.string(),
   });
 
+  const handleOpenDialog = (planType) => {
+    setDialogDetails(planType);
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+    setDialogDetails("");
+  };
+
   return (
-    <div className="py-40 ">
+    <div className="py-40">
       <Formik
         initialValues={{
           name: "",
@@ -47,7 +58,6 @@ const CreateEventForm = () => {
           city: "",
           phone: "",
           event: "",
-          password: "",
           duration: "",
           date: "",
           attendance: "",
@@ -56,33 +66,25 @@ const CreateEventForm = () => {
         }}
         validationSchema={validationSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log(values); // Replace with actual submission logic
+          console.log(values, "formdata");
           resetForm();
         }}
       >
-        {({ handleSubmit, isValid, dirty }) => (
+        {({ handleSubmit, isValid, dirty, setFieldValue }) => (
           <div className="w-[80%] mx-auto flex flex-col text-center p-6 bg-[#E2D0FA] rounded-2xl">
-            {error && <p className="text-red-500">{error}</p>}
-
-            <Form
-              onSubmit={handleSubmit}
-              className="flex flex-col gap-6 items-center mt-4"
-            >
+            <Form onSubmit={handleSubmit} className="flex flex-col gap-6 items-center mt-4">
               {/* User Information Section */}
               <h2 className="text-left font-bold w-full mb-2 text-2xl text-[#9747FF]">
                 User Information
               </h2>
               <div className="grid grid-cols-2 gap-4 w-full">
-                {[
-                  { name: "name", label: "Name", type: "text" },
+                {[{ name: "name", label: "Name", type: "text" },
                   { name: "email", label: "Email", type: "email" },
                   { name: "city", label: "City", type: "text" },
                   { name: "phone", label: "Phone", type: "text" },
                 ].map((field) => (
                   <div key={field.name} className="w-full flex flex-col">
-                    <label className="text-left mb-2 font-bold">
-                      {field.label}
-                    </label>
+                    <label className="text-left mb-2 font-bold">{field.label}</label>
                     <Field name={field.name}>
                       {({ field }) => (
                         <input
@@ -92,11 +94,7 @@ const CreateEventForm = () => {
                         />
                       )}
                     </Field>
-                    <ErrorMessage
-                      name={field.name}
-                      component="div"
-                      className="text-red-600"
-                    />
+                    <ErrorMessage name={field.name} component="div" className="text-red-600" />
                   </div>
                 ))}
               </div>
@@ -106,15 +104,13 @@ const CreateEventForm = () => {
                 Event Information
               </h2>
               <div className="grid grid-cols-2 gap-4 w-full">
-                {[
-                  { name: "event", label: "Event Name", type: "text" },
+                {[{ name: "event", label: "Event Name", type: "text" },
                   { name: "duration", label: "Duration", type: "text" },
-                  { name: "attendance", label: "Attendance ", type: "number" },
+                  { name: "attendance", label: "Attendance", type: "number" },
+                  { name: "date", label: "Date", type: "date" },
                 ].map((field) => (
                   <div key={field.name} className="w-full flex flex-col">
-                    <label className="text-left mb-2 font-bold">
-                      {field.label}
-                    </label>
+                    <label className="text-left mb-2 font-bold">{field.label}</label>
                     <Field name={field.name}>
                       {({ field }) => (
                         <input
@@ -124,32 +120,9 @@ const CreateEventForm = () => {
                         />
                       )}
                     </Field>
-                    <ErrorMessage
-                      name={field.name}
-                      component="div"
-                      className="text-red-600"
-                    />
+                    <ErrorMessage name={field.name} component="div" className="text-red-600" />
                   </div>
                 ))}
-
-                {/* Custom Date Input */}
-                <div className="w-full flex flex-col">
-                  <label className="text-left mb-2 font-bold">Date</label>
-                  <Field name="date">
-                    {({ field }) => (
-                      <input
-                        {...field}
-                        type="date"
-                        className="p-3 w-full border rounded-lg bg-[#E7EEF0] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
-                      />
-                    )}
-                  </Field>
-                  <ErrorMessage
-                    name="date"
-                    component="div"
-                    className="text-red-600"
-                  />
-                </div>
               </div>
 
               {/* Plan Section */}
@@ -158,17 +131,29 @@ const CreateEventForm = () => {
               </h2>
               <div className="w-full flex flex-col">
                 <label className="text-left mb-2 font-bold">Plan</label>
-                <Field name="plan" as="select" className="p-3 border rounded-lg bg-[#E7EEF0]">
-                  <option value="" label="Select a plan" />
-                  <option value="Basic" label="Basic" />
-                  <option value="Premium" label="Premium" />
-                  <option value="Royal" label="Royal" />
+                <Field name="plan">
+                  {({ field }) => (
+                    <select
+                      {...field}
+                      className="p-3 border rounded-lg bg-[#E7EEF0] w-full"
+                      onChange={(e) => {
+                        const selectedPlan = plans.find((plan) => plan.value === e.target.value);
+                        setFieldValue("plan", e.target.value);
+                        if (selectedPlan) {
+                          handleOpenDialog(selectedPlan.value);
+                        }
+                      }}
+                    >
+                      <option value="" label="Select a plan" />
+                      {plans.map((plan) => (
+                        <option key={plan.value} value={plan.value}>
+                          {plan.label}
+                        </option>
+                      ))}
+                    </select>
+                  )}
                 </Field>
-                <ErrorMessage
-                  name="plan"
-                  component="div"
-                  className="text-red-600"
-                />
+                <ErrorMessage name="plan" component="div" className="text-red-600 mt-1" />
               </div>
 
               {/* More Information */}
@@ -182,23 +167,23 @@ const CreateEventForm = () => {
                 />
               </div>
 
-             
-
               <Button
                 type="submit"
                 disabled={!(isValid && dirty)}
                 className={`z-[3] mt-6 items-center bg-[#9747FF] font-semibold px-5 py-3 rounded-full text-white uppercase ${
-                  !(isValid && dirty)
-                    ? "opacity-50 cursor-not-allowed"
-                    : "cursor-pointer"
+                  !(isValid && dirty) ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
                 }`}
               >
-               Book Now
+                Submit
               </Button>
             </Form>
           </div>
         )}
       </Formik>
+
+      {/* Plan Details Dialog */}
+      
+      <SinglePlanCard isOpen={dialogOpen} onClose={handleCloseDialog} planType={dialogDetails} />
     </div>
   );
 };
