@@ -22,7 +22,7 @@ const ViewEvents = () => {
   return (
     <div>
         
-        <TableComp  type= "availabelEvents"  eventTableData={tableData} />
+        <TableComp  type= "availabelEvents"  tableData={tableData} />
     </div>
   );
 };

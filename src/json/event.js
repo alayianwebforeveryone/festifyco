@@ -1,74 +1,29 @@
-export const personData =[
-  {
-    "name": "Alice Johnson",
-    "eventName": "Tech Conference 2024",
-    "passId": "P@55-ALC-1039"
-  },
-  {
-    "name": "Bob Smith",
-    "eventName": "Tech Conference 2024",
-    "passId": "P@55-BSM-2048"
-  },
-  {
-    "name": "Carol Davis",
-    "eventName": "Tech Conference 2024",
-    "passId": "P@55-CRL-3091"
-  },
-  {
-    "name": "David Miller",
-    "eventName": "Tech Conference 2024",
-    "passId": "P@55-DML-4076"
-  },
-  {
-    "name": "Emma Wilson",
-    "eventName": "Tech Conference 2024",
-    "passId": "P@55-EMW-5023"
-  },
-
-]
 
 
-export const planData =  [
+ export const services = [
   {
-    "planName": "Basic Plan",
-    "venues": [
-      "Handle 100 number of  People.  ",
-      "Indoor",
-      "Sound System.",
-      "Power back up."
-    ],
-    "menu": [
-      "Refreshment.",
-      "Chose 4 items of Food from menu."
-    ]
+    serviceName:'Event Listing',
+    description:'Browse free events happening online or onsite and attent your favourite event',
   },
   {
-    "planName": "Premium Plan",
-    "venues": [
-      "Handle 100 number of  People.  ",
-      "Indoor",
-      "Sound System.",
-      "Power back up."
-    ],
-    "menu": [
-      "Refreshment.",
-      "Chose 4 items of Food from menu."
-    ]
+    serviceName:'User Event Management',
+    description:'Register your event and let us handle the rest!',
   },
   {
-    "planName": "Exclusive Plan",
-    "venues": [
-      "Handle 100 number of  People.  ",
-      "Indoor",
-      "Sound System.",
-      "Power back up."
-    ],
-    "menu": [
-      "Refreshment.",
-      "Chose 4 items of Food from menu."
-    ]
+    serviceName:'Venu Selection',
+    description:'Choose the perfect venue from our curated list.',
+  },
+  {
+    serviceName:'Customize Service',
+    description:'You can make your own offer feel free to contact.',
+  },
+  {
+    serviceName:'Catering and Food Menu',
+    description:'Delight your guests with customized catering menus.',
   }
-]
+ ]
+
+
 
 
 export const eventCardData = [

@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { PaginationComp } from "./PaginationComp";
-import { FilterTableData } from "../Dashboard/View Events/FilterTableData";
+import { SelectBox } from "./SelectBox";
 import Button from "./Button";
 import EventCardModal from "../ExploreEvent/EventCardModal";
 
@@ -22,10 +22,10 @@ const calculateDaysRemaining = (eventDate) => {
   return Math.ceil(timeDiff / (1000 * 60 * 60 * 24)); // Convert ms to days
 };
 
-const TableComp = ({ type, eventTableData }) => {
+const TableComp = ({ type, tableData }) => {
   const [processedData, setProcessedData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [filterType, setFilterType] = useState("all");
+  const [selectType, setSelectType] = useState("All");
   const [showModal, setShowModal] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
 
@@ -33,10 +33,16 @@ const TableComp = ({ type, eventTableData }) => {
   const totalPages = Math.ceil(processedData.length / rowsPerPage);
 
   // Perform the calculation only on the client side
+  const filterValue = ["All", "Past", "Upcoming"];
+  console.log("tableData", tableData);
+
   useEffect(() => {
-    if (eventTableData && eventTableData.length > 0) {
-      const updatedData = eventTableData.map((event) => {
-        const daysRemaining = calculateDaysRemaining(event.DateTime);
+    if (tableData && tableData.length > 0) {
+      const updatedData = tableData.map((event) => {
+        console.log("event in table map", event.date);
+
+        const daysRemaining = calculateDaysRemaining(event.date);
+        console.log("daysRemaining", daysRemaining);
         return {
           ...event,
           status:
@@ -48,16 +54,18 @@ const TableComp = ({ type, eventTableData }) => {
       });
       setProcessedData(updatedData);
     }
-  }, [eventTableData]);
+  }, [tableData]);
+
+  console.log("processedData", processedData);
 
   const filteredData = processedData.filter((row) => {
-    console.log("filterType", filterType);
-    if (filterType === "upcoming") return !row.isPassed; // Only upcoming events
-    if (filterType === "past") return row.isPassed; // Only past events
+    console.log("filterType", selectType);
+    if (selectType === "Upcoming") return !row.isPassed; // Only upcoming events
+    if (selectType === "Past") return row.isPassed; // Only past events
     return true;
   });
 
-  console.log("filteredData", filterType);
+  console.log("filteredData", selectType);
 
   const paginatedData = filteredData.slice(
     (currentPage - 1) * rowsPerPage,
@@ -67,7 +75,7 @@ const TableComp = ({ type, eventTableData }) => {
   // Show a message if no data is available
   if (!processedData || processedData.length === 0) {
     return (
-      <div className="text-[24px] text-center text-[#9747FF]">
+      <div className="text-[24px] mt-48 font-bold text-3xl text-center text-[#9747FF]">
         No data available
       </div>
     );
@@ -76,7 +84,7 @@ const TableComp = ({ type, eventTableData }) => {
   return (
     <div className="bg-[#E7EEF0]   py-6 px-8 rounded-[22px] mr-8 ">
       <div className="flex justify-end   top-0 mb-4  pr-8 ">
-        <FilterTableData setFilterType={setFilterType} />
+        <SelectBox type="table" values={filterValue} setSelectType={setSelectType} />
       </div>
 
       <Table className=" ">
@@ -100,10 +108,10 @@ const TableComp = ({ type, eventTableData }) => {
                 close={() => setShowModal(false)}
               />
               <TableRow className="bg-white" key={rowIndex}>
-                <TableCell className="text-[18px]">{row.id}</TableCell>
-                <TableCell className="text-[18px]">{row.Event_Name}</TableCell>
+                <TableCell className="text-[18px]">{row.$id}</TableCell>
+                <TableCell className="text-[18px]">{row.eventName}</TableCell>
                 <TableCell className="text-[18px]">
-                  {new Date(row.DateTime).toLocaleString()}
+                  {new Date(row.date).toLocaleString()}
                 </TableCell>
 
                 <TableCell
@@ -113,7 +121,7 @@ const TableComp = ({ type, eventTableData }) => {
                 >
                   {row.status}
                 </TableCell>
-                {type === "availableEvents" && (
+                {type === "availabelEvents" && (
                   <TableCell className="text-[18px]">
                     {!row.isPassed ? (
                       <Button

@@ -1,11 +1,11 @@
-import RegisteredEvents from "@/components/Dashboard/Registered Event";
+import PurchasedEvents from "@/components/Dashboard/Purchased Events";
 
 
 const RegisteredEventsPage = () =>{
     return (
       <>
         <div className=" ">
-          <RegisteredEvents/>
+          <PurchasedEvents/>
         </div>
     
       </>

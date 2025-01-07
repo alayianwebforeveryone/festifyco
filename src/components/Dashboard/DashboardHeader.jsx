@@ -2,17 +2,24 @@
 import * as React from "react";
 import Link from "next/link";
 import Button from "../Common/Button";
+import { useSelector } from "react-redux";
 
 export function DashboardHeader() {
+  const currentUser = useSelector((state) => state.auth.userData?.name);
+  console.log("Current User:", currentUser);
+  const currentUserEmail = useSelector((state) => state.auth.userData?.email);
+  console.log("Current User:", currentUserEmail);
+ 
+
   return (
     <div className=" fixed top-0   z-20  bg-[#EBE2F5]   ">
       <div className="flex justify-between  px-8 mb-8 py-4  ">
         <div className="flex justify- items:center gap-24    ">
           <span className="text-[#9747FF] font-bold   text-xl">
-            Alayian Saeed
+            {currentUser ?? "User"}
           </span>
           <span className="text-[#9747FF]  font-bold text-xl">
-            exmple@gmail.com
+            {currentUserEmail ?? "Email"}
           </span>
         </div>
         <Link href="/">

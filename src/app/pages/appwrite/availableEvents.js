@@ -1,7 +1,7 @@
 import conf from '../../../conf/conf.js';
 import { Client, Databases, ID } from "appwrite";
 
-export class EventService {
+export class AvailableEventsServices {
     client = new Client();
     databases;
 
@@ -89,5 +89,5 @@ export class EventService {
 }
 
 // Create an instance of the EventService
-const eventService = new EventService();
-export default eventService;
+const availableEventsServices = new AvailableEventsServices();
+export default availableEventsServices;

@@ -1,12 +1,13 @@
-import RegisteredEvents from "@/components/Dashboard/Registered Event";
+import CreateEvent from "@/components/Dashboard/CreateEvent";
 
 
-const CreateEventsPage = () => {
-  return (
-    <>
-      < RegisteredEvents />
-
-    </>
-  );
-}
-export default CreateEventsPage;
+const CreateEventsPage = () =>{
+    return (
+      <>
+<CreateEvent/>
+    
+      </>
+    );
+  }
+  export default CreateEventsPage;
+  

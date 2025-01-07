@@ -54,14 +54,16 @@ export const Home = () => {
               every detail is perfect.
             </p>
             {isLogedIn ? (
+               <Link href="/pages/services">
               <Button
                 type="Submit"
                 className="px-4 bg-[#9747FF] text-white  rounded-full  mt-4"
               >
                 Try Our Service
               </Button>
+              </Link>
             ) : (
-              <Link href="/signUp">
+              <Link href="/pages/signUp">
                 <Button
                   type="Submit"
                   className="px-12 text-xl font-bold  py-4 bg-[#9747FF] text-white  rounded-full  mt-4"

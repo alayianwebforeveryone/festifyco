@@ -1,7 +1,11 @@
-import conf from '../../../conf/conf.js';
-import { Client, Databases, ID } from "appwrite";
 
-export class AvallableEvents {
+
+import conf from '../../../conf/conf.js';
+import { Client, Databases, ID, Permission, Role , Query } from "appwrite";
+// import { Permission,  } from "appwrite";
+import authService from './auth.js';
+
+export class CreatedEventsServices {
     client = new Client();
     databases;
 
@@ -13,26 +17,39 @@ export class AvallableEvents {
         this.databases = new Databases(this.client);
     }
 
+
+
     // Create a new event
-    async createEvent({ name, email, phone, city, eventName, duration, date, numOfAttendees, chosenMenu, chosenVenue, moreInfo }) {
+    async createEvent({ name, email, city, phone, eventName, duration, date, time, numOfAttendees, chosePlan, moreInfo }) {
         try {
+            //Get the logged-in user's ID from authService
+            const user = await authService.getCurrentUser(); // Assuming you have a method to get the current user
+
             const event = await this.databases.createDocument(
-                conf.databaseId,
-                conf.eventsCollectionId,
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
                 ID.unique(),
                 {
                     name,
                     email,
-                    phone,
                     city,
+                    phone,
                     eventName,
                     duration,
                     date,
+                    time,
                     numOfAttendees,
-                    chosenMenu,
-                    chosenVenue,
+                    chosePlan,
                     moreInfo,
-                }
+                    creatorUserId: user.$id 
+                },
+                [
+                    Permission.read(Role.user(user.$id)), 
+                    Permission.update(Role.user(user.$id)), 
+                    Permission.delete(Role.user(user.$id)), 
+                ]
+            
+
             );
             return event;
         } catch (error) {
@@ -41,14 +58,22 @@ export class AvallableEvents {
         }
     }
 
+
     // Get details of a specific event
     async getEventById(eventId) {
         try {
+            const user = await authService.getCurrentUser(); // Get logged-in user ID
             const event = await this.databases.getDocument(
-                conf.databaseId,
-                conf.eventsCollectionId,
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
                 eventId
             );
+
+            // Check if the logged-in user is the creator of the event
+            if (event.creatorUserId !== user.$id) {
+                throw new Error("You are not authorized to view this event.");
+            }
+
             return event;
         } catch (error) {
             console.error("EventService :: getEventById() ::", error);
@@ -56,14 +81,22 @@ export class AvallableEvents {
         }
     }
 
-    // Get all events
+    // Get all events (optional: filter events by user)
     async getAllEvents() {
         try {
+            const user = await authService.getCurrentUser(); 
+            console.log("user", user.$id)
+            const query = [
+                Query.equal('creatorUserId', user.$id) 
+            ]; 
+    
             const events = await this.databases.listDocuments(
                 conf.appwriteDatabaseId,
-                conf.appwriteCollectionId
+                conf.appwriteCollectionId,
+                query 
             );
-            return events.documents; // Array of event documents
+    
+            return events.documents; 
         } catch (error) {
             console.error("EventService :: getAllEvents() ::", error);
             throw error;
@@ -73,9 +106,22 @@ export class AvallableEvents {
     // Update an event
     async updateEvent(eventId, { name, email, phone, city, eventName, duration, date, numOfAttendees, chosenMenu, chosenVenue, moreInfo }) {
         try {
+            const user = await authService.getCurrentUser(); // Get logged-in user ID
+            const event = await this.databases.getDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                eventId
+            );
+
+            // Check if the logged-in user is the creator of the event
+            if (event.creatorUserId !== user.$id) {
+                throw new Error("You are not authorized to update this event.");
+            }
+
+            // Proceed to update the event
             const updatedEvent = await this.databases.updateDocument(
-                conf.databaseId,
-                conf.eventsCollectionId,
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
                 eventId,
                 {
                     name,
@@ -89,6 +135,8 @@ export class AvallableEvents {
                     chosenMenu,
                     chosenVenue,
                     moreInfo,
+                    
+
                 }
             );
             return updatedEvent;
@@ -101,9 +149,22 @@ export class AvallableEvents {
     // Delete an event
     async deleteEvent(eventId) {
         try {
+            const user = await authService.getCurrentUser(); // Get logged-in user ID
+            const event = await this.databases.getDocument(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                eventId
+            );
+
+            // Check if the logged-in user is the creator of the event
+            if (event.creatorUserId !== user.$id) {
+                throw new Error("You are not authorized to delete this event.");
+            }
+
+            // Proceed to delete the event
             const result = await this.databases.deleteDocument(
-                conf.databaseId,
-                conf.eventsCollectionId,
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
                 eventId
             );
             return result;
@@ -115,5 +176,5 @@ export class AvallableEvents {
 }
 
 // Create an instance of the EventService
-const availableEvents = new AvallableEvents();
-export default availableEvents;
+const createdEventsServices = new CreatedEventsServices();
+export default createdEventsServices;
