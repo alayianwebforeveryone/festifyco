@@ -54,7 +54,7 @@ const ExploreEventCard = ({ eventCardData }) => {
           />
         </figure>
         <div className="flex flex-col space-y-3 mt-2">
-          <h2 className="text-center font-bold">{eventCardData.Event_Name}</h2>
+          <h2 className="text-center font-bold">{eventCardData.eventName}</h2>
 
           <div className="flex my-2 justify-center">
             <div className="flex gap-2 justify-center">
@@ -66,7 +66,7 @@ const ExploreEventCard = ({ eventCardData }) => {
                 width={20}
               />
               <span>
-                {new Date(eventCardData.DateTime).toLocaleDateString()}
+                {new Date(eventCardData.date).toLocaleDateString()}
               </span>
             </div>
           </div>
