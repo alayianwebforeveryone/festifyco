@@ -1,17 +1,16 @@
-import React from 'react'
-import PlanCard from './PlanCard'
+import React from "react";
 
-import ServicesCarousel from './ServicesCarousel'
+import ServicesCarousel from "./ServicesCarousel";
+import PlanCard from "./Plan/PlanCard";
+import Plan from "./Plan";
 
 const Services = () => {
   return (
-
     <>
-  <ServicesCarousel/>
-  <PlanCard />
+      <ServicesCarousel />
+      <Plan />
     </>
-   
-  )
-}
+  );
+};
 
-export default Services
+export default Services;

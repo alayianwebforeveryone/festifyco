@@ -37,8 +37,8 @@ const items = [
     icon: createEvents,
   },
   {
-    title: "Registered Events",
-    url: "/pages/dashboard/registered_event",
+    title: "Purchased Events",
+    url: "/pages/dashboard/purchased_events",
     icon: registeredEvents,
   },
   {

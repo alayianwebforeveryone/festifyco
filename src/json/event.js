@@ -23,47 +23,7 @@
   }
  ]
 
-export const planData =  [
-  {
-    "planName": "Basic Plan",
-    "venues": [
-      "Handle 100 number of  People.  ",
-      "Indoor",
-      "Sound System.",
-      "Power back up."
-    ],
-    "menu": [
-      "Refreshment.",
-      "Chose 4 items of Food from menu."
-    ]
-  },
-  {
-    "planName": "Premium Plan",
-    "venues": [
-      "Handle 500 number of  People.  ",
-      "Indoor",
-      "Sound System.",
-      "Power back up."
-    ],
-    "menu": [
-      "Lunch",
-      "Chose 6 items of Food from menu."
-    ]
-  },
-  {
-    "planName": "Exclusive Plan",
-    "venues": [
-      "Handle 800 number of  People.  ",
-      "Indoor",
-      "Sound System.",
-      "Power back up."
-    ],
-    "menu": [
-      "Dinner.",
-      "Chose 8 items of Food from menu."
-    ]
-  }
-]
+
 
 
 export const eventCardData = [
