@@ -43,10 +43,15 @@ const ContactForm = () => {
           }}
         >
           {({ handleSubmit, isValid, dirty }) => (
-            <div className=" border-4  flex flex-col text-center py-6 bg-white border-[#9747FF] rounded-2xl">
-              <h1 className="font-bold text-[1.5rem] sm:text-[2rem] leading-[2rem] sm:leading-[2.4375rem] text-[#9747FF]">SignUp</h1>
+            <div className="   flex flex-col text-center py-6   rounded-2xl">
+              <h1 className="font-bold text-[1.5rem] sm:text-[2rem] leading-[2rem]  text-[#9747FF]">
+                Contact
+              </h1>
 
-              <Form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 sm:p-6 rounded-lg items-center  mt-4">
+              <Form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-4 md:gap-1 p-4  rounded-lg items-center  mt-4"
+              >
                 {/* Name Field */}
                 
                 <div className="flex w-full flex-col mb-4">

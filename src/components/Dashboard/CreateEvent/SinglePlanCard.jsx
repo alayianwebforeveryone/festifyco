@@ -74,3 +74,4 @@ const SinglePlanCard = ({ isOpen, onClose, planType }) => {
 };
 
 export default SinglePlanCard;
+

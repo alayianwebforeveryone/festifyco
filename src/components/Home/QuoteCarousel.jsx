@@ -52,12 +52,12 @@ const QuoteCarousel = () => {
   };
 
   return (
-    <div className="relative w-full text-white  bg-pink-400 max-w-7xl mx-auto">
+    <div className="relative w-full text-white   max-w-7xl mx-auto">
       {/* Slick Carousel */}
       <Slider ref={sliderRef} {...settings}>
         {quotes.map((quote, index) => (
-          <div key={index} className="flex justify-center bg-[#EBE2F5] items-center p-6">
-            <div className="text-center mx-auto items-center text-black justify-center flex flex-col px-4 lg:px-8 bg-[#EBE2F5] py-10 w-[319px] sm:w-[250px] md:w-[280px] lg:w-[319px] h-[279px] gap-6 border-2 border-[#9747FF]  rounded-lg shadow-lg">
+          <div key={index} className="flex justify-center bg-[#EBE2F5] items-center p-6 lg:p-2">
+            <div className="text-center mx-auto items-center text-black justify-center flex flex-col px-4 lg:px-4 bg-[#EBE2F5] py-10 w-[319px] sm:w-[250px] md:w-[280px] lg:w-[310px] h-[279px] gap-6 border-2 border-[#9747FF]  rounded-lg shadow-lg">
               <span className=''><Image src={qouteImgae} alt='/' width={48}  /></span>
               <p className="text-[0.875rem] sm:w-[220px] md:w-[250px] lg:w-[284px] w-[284px] font-normal leading-[1.5rem] ">{quote.quote}</p>
               <p className="text-[1.375rem] font-bold leading-[1.664375rem]  text-[#60B0F4]">- {quote.author}</p>
