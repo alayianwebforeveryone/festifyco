@@ -6,7 +6,7 @@ import {planData} from "../../../json/plan";
 const Plan = () => {
   return (
     <>
-      <div className=" w-full   flex   gap-10 justify-center  mt-60 mb-20">
+      <div className=" max-w-full   flex flex-col sm:flex-row sm:flex-wrap px-16 sm:px-6 md:px-16   gap-10 justify-center  mt-60 mb-20">
          {
            planData.map((data)=>{
 

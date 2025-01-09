@@ -7,74 +7,79 @@ import { useSelector } from "react-redux";
 
 const PlanCard = ({ data }) => {
   const isLogedIn = useSelector((state) => state.auth.status);
+
   return (
-    <>
-      <div key={data.id} className=" ">
-        <div className="  space-y-6 border-2 bg-[#E2D0FA] border-[#9747FF] p-6 flex flex-col">
-          <Button className="bg-[#60B0F4] rounded-md w-[60%] mx-auto cursor-default">
-            {data.planName}
-          </Button>
-          <h1 className="font-bold text-lg text-center">Venus</h1>
+    <div key={data.id} className="w-[80%] md:w-[45%] lg:w-[45%] xl:w-[30%] mx-auto">
+      <div className="space-y-6 border-2 bg-[#E2D0FA] border-[#9747FF] p-6 flex flex-col rounded-lg shadow-md">
+        <Button className="bg-[#60B0F4] rounded-md w-[70%] sm:w-[60%] mx-auto cursor-default">
+          {data.planName}
+        </Button>
+        <h1 className="font-bold text-lg text-center">Venus</h1>
 
-          {/* Venues */}
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="rounded-full p-1 bg-[#9747FF]">
-                <TiTick className="text-white" />
-              </span>
-              <p className="text-sm">
-                Handle <span className="text-[#6f39b6] font-bold text-[18px] ">{data.Attendees}</span>  Number of People
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="rounded-full p-1 bg-[#9747FF]">
-                <TiTick className="text-white" />
-              </span>
-              <p className="text-sm">Indoor</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="rounded-full p-1 bg-[#9747FF]">
-                <TiTick className="text-white" />
-              </span>
-              <p className="text-sm">Sound system</p>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="rounded-full p-1 bg-[#9747FF]">
-                <TiTick className="text-white" />
-              </span>
-              <p className="text-sm">Power backup</p>
-            </div>
+        {/* Venues */}
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="rounded-full p-1 bg-[#9747FF]">
+              <TiTick className="text-white" />
+            </span>
+            <p className="text-sm sm:text-base">
+              Handle{" "}
+              <span className="text-[#6f39b6] font-bold text-[18px]">
+                {data.Attendees}
+              </span>{" "}
+              Number of People
+            </p>
           </div>
-
-          <h1 className="font-bold text-lg text-center">Menu</h1>
-
-          {/* Menu */}
-          <div className="space-y-2">
-            <div className="flex items-center gap-2">
-              <span className="rounded-full p-1 bg-[#9747FF]">
-                <TiTick className="text-white" />
-              </span>
-              <p className="text-sm ">{data.food}</p>
-              <span className="rounded-full p-1 bg-[#9747FF]">
-                <TiTick className="text-white" />
-              </span>
-              <p className="text-sm ">Chose {data.Items} items from meue</p>
-            </div>
+          <div className="flex items-center gap-2">
+            <span className="rounded-full p-1 bg-[#9747FF]">
+              <TiTick className="text-white" />
+            </span>
+            <p className="text-sm sm:text-base">Indoor</p>
           </div>
-
-          <Link
-            href={
-              isLogedIn ? "/pages/dashboard/create_events" : "/pages/signUp"
-            }
-            className=" flex items-center"
-          >
-            <Button className="bg-[#60B0F4] text-white w-[40%] sm:w-[50%] mx-auto">
-              Book Now
-            </Button>
-          </Link>
+          <div className="flex items-center gap-2">
+            <span className="rounded-full p-1 bg-[#9747FF]">
+              <TiTick className="text-white" />
+            </span>
+            <p className="text-sm sm:text-base">Sound system</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="rounded-full p-1 bg-[#9747FF]">
+              <TiTick className="text-white" />
+            </span>
+            <p className="text-sm sm:text-base">Power backup</p>
+          </div>
         </div>
+
+        <h1 className="font-bold text-lg text-center">Menu</h1>
+
+        {/* Menu */}
+        <div className="space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="rounded-full p-1 bg-[#9747FF]">
+              <TiTick className="text-white" />
+            </span>
+            <p className="text-sm sm:text-base">{data.food}</p>
+            <span className="rounded-full p-1 bg-[#9747FF]">
+              <TiTick className="text-white" />
+            </span>
+            <p className="text-sm sm:text-base">
+              Choose {data.Items} items from menu
+            </p>
+          </div>
+        </div>
+
+        <Link
+          href={
+            isLogedIn ? "/pages/dashboard/create_events" : "/pages/signUp"
+          }
+          className="flex items-center"
+        >
+          <Button className="bg-[#60B0F4] text-white w-[60%] sm:w-[50%] lg:w-[40%] mx-auto">
+            Book Now
+          </Button>
+        </Link>
       </div>
-    </>
+    </div>
   );
 };
 
