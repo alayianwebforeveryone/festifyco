@@ -52,7 +52,7 @@ const EventBarGraph = ({graphData}) => {
         <Tooltip />
         <Legend />
         <Bar dataKey="Purchased Event" fill="#9747FF" />
-        <Bar dataKey="Registered Event" fill="#60B0F4" />
+       
       </BarChart>
     </ResponsiveContainer>
   );

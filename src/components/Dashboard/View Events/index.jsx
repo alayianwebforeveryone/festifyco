@@ -20,7 +20,7 @@ const ViewEvents = () => {
 }, []);
 
   return (
-    <div>
+    <div className="mt-48 ">
         
         <TableComp  type= "availabelEvents"  tableData={tableData} />
     </div>

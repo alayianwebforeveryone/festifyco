@@ -29,14 +29,14 @@ const Logout = ({ type }) => {
   return (
     <>
       <div
-        className={` w-[40%] mx-auto 
+        className={` w-[80%] lg:w-[50%]  mx-auto 
           ${type === "dashboard" ? "pt-36" : "pt-72"}
           
         }`}
       >
-        <div className="border-2 rounded-[20px] bg-white   mx-auto  p-8   border-[#9747FF]">
-          <p className="text-center text-2xl font-bold text-[#9747FF]">
-            Are you sure you want to Log out{" "}
+        <div className="border-2 shadow-[#d5bbf8] shadow-lg  rounded-[20px] bg-white   mx-auto  p-8   border-[#9747FF]">
+          <p className="text-center text-xl xl:text-2xl font-bold text-[#9747FF]">
+            Are you sure you want to Log out?{" "}
           </p>
           <div className="flex justify-center px-4 gap-40 my-12   ">
             <Link href="/ ">
@@ -46,7 +46,7 @@ const Logout = ({ type }) => {
             </Link>
             <Button
               onClick={logoutHandler}
-              className="border-2 rounded-lg text-center  py-1 hover:text-white  hover:bg-[#9747FF] border-[#9747FF] text-[#9747FF]"
+              className="border-2 rounded-lg text-center  py-1 hover:text-white bg-[#9747FF]  text-white hover:bg-[#c1a8e2] border-[#9747FF] "
             >
               Yes
             </Button>

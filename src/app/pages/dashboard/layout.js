@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
           }}
         >
           <AppSidebar />
-          <main className=" ml-8      w-full ">
+          <main className=" ml-8  w-[67%] lg:w-[75%]    xl:w-full ">
             <SidebarTrigger />
             <DashboardHeader />
             <div className="mt-72">

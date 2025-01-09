@@ -34,12 +34,7 @@ export function Stats() {
           <h1 className="text-[#5592C6] font-bold text-3xl mb-12  ">
             Total Numbers
           </h1>
-          <p className="text-[24px] font-bold ">
-            Registered Events:{" "}
-            <span className="text-[#9747FF] text-[32px] ml-4 font-bold">
-              25
-            </span>{" "}
-          </p>
+          
           <p className="text-[24px] font-bold">
             Your Purchased Events:
             <span className="text-[#60B0F4] text-[32px] ml-4 ">{purchasedEventsCount}</span>

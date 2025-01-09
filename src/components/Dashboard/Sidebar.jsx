@@ -51,7 +51,7 @@ const items = [
 export function AppSidebar() {
   const pathname = usePathname();
   return (
-    <Sidebar className="  ">
+    <Sidebar className="   ">
       <SidebarHeader className= "bg-[#C7B1E2]">
         <Link href="/">
           <div className=" xl:mt-24 mt-8 px-2   xl:pl-8">

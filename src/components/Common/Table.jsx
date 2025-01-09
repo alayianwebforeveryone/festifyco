@@ -82,7 +82,7 @@ const TableComp = ({ type, tableData }) => {
   }
 
   return (
-    <div className="bg-[#E7EEF0]   py-6 px-8 rounded-[22px] mr-8 ">
+    <div className="bg-[#E7EEF0]   py-6 px-2  xl:px-8 rounded-[22px] xl:mr-8 ">
       <div className="flex justify-end   top-0 mb-4  pr-8 ">
         <SelectBox type="table" values={filterValue} setSelectType={setSelectType} />
       </div>
@@ -90,10 +90,10 @@ const TableComp = ({ type, tableData }) => {
       <Table className=" ">
         <TableHeader className="bg-[#E2D0FA]">
           <TableRow>
-            <TableHead className="font-bold text-[24px]">ID</TableHead>
-            <TableHead className="font-bold text-[24px]">Event Name</TableHead>
-            <TableHead className="font-bold text-[24px]">Date & Time</TableHead>
-            <TableHead className="font-bold text-[24px]">Status</TableHead>
+            <TableHead className="font-bold text-[16px] xl:text-[24px]">ID</TableHead>
+            <TableHead className="font-bold text-[16px] xl:text-[24px]">Event Name</TableHead>
+            <TableHead className="font-bold text-[16px] xl:text-[24px]">Date & Time</TableHead>
+            <TableHead className="font-bold text-[16px] xl:text-[24px]">Status</TableHead>
             {type === "availabelEvents" && (
               <TableHead className="font-bold text-[24px]">Action</TableHead>
             )}
@@ -108,21 +108,21 @@ const TableComp = ({ type, tableData }) => {
                 close={() => setShowModal(false)}
               />
               <TableRow className="bg-white" key={rowIndex}>
-                <TableCell className="text-[18px]">{row.$id}</TableCell>
-                <TableCell className="text-[18px]">{row.eventName}</TableCell>
-                <TableCell className="text-[18px]">
+                <TableCell className="xl:text-[18px] text-[14px] ">{row.$id}</TableCell>
+                <TableCell className="xl:text-[18px] text-[14px] ">{row.eventName}</TableCell>
+                <TableCell className="xl:text-[18px] text-[14px] ">
                   {new Date(row.date).toLocaleString()}
                 </TableCell>
 
                 <TableCell
-                  className={`] font-bold text-[20px] ${
+                  className={`] font-bold xl:text-[18px] text-[14px]  ${
                     row.isPassed ? "text-red-500 " : "text-[#9747FF]"
                   }`}
                 >
                   {row.status}
                 </TableCell>
                 {type === "availabelEvents" && (
-                  <TableCell className="text-[18px]">
+                  <TableCell className="xl:text-[18px] text-[14px] ">
                     {!row.isPassed ? (
                       <Button
                         onClick={() => {
