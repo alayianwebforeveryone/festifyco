@@ -55,7 +55,7 @@ const ContactForm = () => {
 
                 <div className="flex w-full flex-col mb-2">
                   <label className="text-[1rem] sm:text-[1.25rem] leading-[1.25rem] sm:leading-[1.5rem] text-left mb-2 font-bold">
-                    Name
+                    Namee
                   </label>
                   <Field name="name">
                     {({ field }) => (
