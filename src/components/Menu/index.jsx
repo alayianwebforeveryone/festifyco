@@ -60,13 +60,14 @@ const Menu = () => {
   return (
     <>
       <nav className="fixed w-full z-10 bg-[#EBE2F5] ">
-        <div className="flex items-center justify-between container mx-auto sm:px-4  py-3">
+        <div className="flex items-center justify-between  lg:justify-between container mx-auto px-6 sm:px-0 md:px-2 py-3">
           {/* Logo */}
+
           <Link href="/" className="cursor-pointer">
             <Image
               src={logo}
               alt="logo"
-              className=" w-[9rem] cursor-pointer"
+              className=" w-[5rem] sm:w-[4rem] md:w-[6rem] cursor-pointer"
             />
           </Link>
 
@@ -84,7 +85,7 @@ const Menu = () => {
 
           {/* Desktop Menu */}
           <div className="hidden sm:block">
-            <ul className="flex space-x-2 md:space-x-8">
+            <ul className="flex space-x-3 md:space-x-8">
               {navLinks.map((link, index) => (
                 <li key={index}>
                   <NavComp
@@ -138,10 +139,10 @@ const Menu = () => {
 
             <div className="flex flex-col items-center space-y-3 justify-center py-4">
               <Link href="/" onClick={toggleMenu}>
-                <Button text="Login" />
+                <Button className=" bg-[#60B0F4]" >Login</Button>
               </Link>
               <Link href="/login" onClick={toggleMenu}>
-                <Button text="SignUp" colorClass="bg-[#9747FF]" />
+                <Button className="bg-[#9747FF]" >SignUp</Button>
               </Link>
             </div>
           </div>

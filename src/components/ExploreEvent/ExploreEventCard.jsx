@@ -44,8 +44,8 @@ const ExploreEventCard = ({ eventCardData }) => {
         close={() => setShowModal(false)}
       />
 
-      <div className="border-2 w-[335px] md:w-full mx-auto border-[#9747FF] bg-[#D9D9D9] rounded-[20px] lg:px-4 px-2 pt-2 md:py-2 lg:py-3 pb-3 mb-8">
-        <figure className="w-full h-[168px] flex justify-center items-center overflow-hidden rounded-[16px]">
+      <div className="border-2 w-[80%] sm:w-[100%] md:w-[100%] mx-auto border-[#9747FF] bg-[#D9D9D9] rounded-[20px] lg:px-4 px-2 pt-2 md:py-2 lg:py-3 pb-3 mb-8">
+        <figure className="w-full h-[168px] md:h-[120px] lg:h-[168px] flex justify-center items-center overflow-hidden rounded-[16px]">
           <Image
             src={eventCardData.image}
             alt={eventCardData.Event_Name}

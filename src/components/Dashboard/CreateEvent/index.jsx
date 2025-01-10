@@ -8,15 +8,31 @@ import createdEventsServices from "../../../app/pages/appwrite/eventServices";
 // import {purchaseEvent} from "../../../app/redux/Slices/userEventSlice";
 import { useDispatch } from "react-redux";
 import PlanModal from "./PlanModal";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { isValidPhoneNumber } from "libphonenumber-js";
 
 const CreateEvent = () => {
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [dialogDetails, setDialogDetails] = useState("");
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [dialogueDetails, setDialogDetails] = useState(null)
   const plans = [
-    { value: "Basic Plan", label: "Basic Plan", details: "Details about the Basic Plan." },
-    { value: "Premium Plan", label: "Premium Plan", details: "Details about the Premium Plan." },
-    { value: "Royal Plan", label: "Royal Plan", details: "Details about the Royal Plan." },
+    {
+      value: "Basic Plan",
+      label: "Basic Plan",
+      details: "Details about the Basic Plan.",
+    },
+    {
+      value: "Premium Plan",
+      label: "Premium Plan",
+      details: "Details about the Premium Plan.",
+    },
+    {
+      value: "Royal Plan",
+      label: "Royal Plan",
+      details: "Details about the Royal Plan.",
+    },
   ];
 
   const handleOpenDialog = (planType) => {
@@ -28,7 +44,6 @@ const CreateEvent = () => {
     setDialogOpen(false);
     setDialogDetails("");
   };
-  const [dialogOpen, setDialogOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -39,6 +54,7 @@ const CreateEvent = () => {
         name: values.name,
         email: values.email,
         phone: values.phone,
+
         city: values.city,
         eventName: values.eventName,
         duration: values.duration,
@@ -67,8 +83,12 @@ const CreateEvent = () => {
       .required("Email is required"),
     city: Yup.string().required("City is required"),
     phone: Yup.string()
-      .matches(/^[0-9]{10}$/, "Phone number must be 10 digits")
-      .required("Phone number is required"),
+      .required("Phone number is required")
+      .test(
+        "is-valid-phone",
+        "Invalid phone number",
+        (value) => value && isValidPhoneNumber(value)
+      ),
     eventName: Yup.string()
       .required("Event name is required")
       .max(100, "Event name must be 100 characters or less"),
@@ -88,7 +108,7 @@ const CreateEvent = () => {
   });
 
   return (
-    <div className="pt-8 pr-12 pl-4  ">
+    <div className="pt-8 bg-red-500 ">
       <Formik
         initialValues={{
           name: "",
@@ -110,7 +130,7 @@ const CreateEvent = () => {
           resetForm();
         }}
       >
-        {({ handleSubmit, isValid, dirty }) => (
+        {({ handleSubmit, isValid, dirty, setFieldValue, values }) => (
           <div className="w-full  mx-auto flex flex-col text-center p-6 bg-[#E2D0FA] rounded-2xl">
             <Form
               onSubmit={handleSubmit}
@@ -120,12 +140,11 @@ const CreateEvent = () => {
               <h2 className="text-left font-bold w-full mb-2 text-2xl text-[#9747FF]">
                 User Information
               </h2>
-              <div className="grid grid-cols-2 gap-x-24 gap-y-4  w-full">
+              <div className="grid grid-cols-2 gap-x-8 xl:gap-x-32 gap-y-4  w-full">
                 {[
                   { name: "name", label: "Name", type: "text" },
                   { name: "email", label: "Email", type: "email" },
                   { name: "city", label: "City", type: "text" },
-                  { name: "phone", label: "Phone", type: "text" },
                 ].map((field) => (
                   <div key={field.name} className="w-full flex flex-col">
                     <label className="text-left mb-2 font-bold">
@@ -147,13 +166,41 @@ const CreateEvent = () => {
                     />
                   </div>
                 ))}
+                <div>
+                  <label className="text-left flex flex-start mb-2 font-bold">
+                    Phone
+                  </label>
+                  <Field name="phone">
+                    {({ field }) => (
+                      <PhoneInput
+                        style={{ width: "100%" }}
+                        inputStyle={{
+                          height: "55px",
+                          width: "100%",
+                        }}
+                        className="p-3 w-full border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
+                        {...field}
+                        defaultCountry="US"
+                        mask="999-999-9999"
+                        placeholder="Enter phone number"
+                        value={values.phone}
+                        onChange={(value) => setFieldValue("phone", value)}
+                      />
+                    )}
+                  </Field>
+                  <ErrorMessage
+                    name="phone"
+                    component="div"
+                    className="text-red-600 mt-1"
+                  />
+                </div>
               </div>
 
               {/* Event Information Section */}
               <h2 className="text-left font-bold w-full mt-4 mb-2 text-2xl text-[#9747FF]">
                 Event Information
               </h2>
-              <div className="grid grid-cols-2 gap-x-24 gap-y-4 w-full">
+              <div className="grid grid-cols-2 gap-x-8 xl:gap-x-32 gap-y-4 w-full">
                 {[
                   { name: "eventName", label: "Event Name", type: "text" },
                   { name: "duration", label: "Duration", type: "number" },
@@ -186,39 +233,13 @@ const CreateEvent = () => {
                   </div>
                 ))}
 
-                {/* <div className="w-full flex flex-col">
-                  <label className="text-left mb-3  font-bold  " htmlFor="category">Chose a Plan</label>
-                  <Field className= "py-3 bg-white px-2 rounded-lg focus:outline-none "  as="select" name="plan" id="category">
-                    <option value="" label="Select a Plan"  />
-                    <option value="basic" label="Baisc Plan" />
-                    <option value="premier" label="Premier Plan" />
-                    <option value="royal" label="Royal Plan" />
-                  </Field>
-                  <ErrorMessage 
-                    name="plan"
-                    component="div"
-                    className="text-red-600 mt-1"
-                  />
-                </div> */}
-                <div className=" w-full  mt-4">
-                  <label className="flex  mb-3   font-bold">
-                    More Information
-                  </label>
-                  <Field
-                    name="moreInfo"
-                    as="textarea"
-                    rows="4"
-                    className="p-3 w-full border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
-                  />
-                </div>
-
                 <div className="w-full flex flex-col">
                   <label className="text-left mb-2 font-bold">Plan</label>
                   <div className="relative">
                     {/* Selected plan display */}
                     <button
                       type="button"
-                      className="p-3 border rounded-lg bg-[#E7EEF0] w-full text-left"
+                      className="p-3 border rounded-lg bg-white w-full text-left"
                       onClick={() => setDropdownOpen(!dropdownOpen)}
                     >
                       {selectedPlan ? selectedPlan.label : "Select a plan"}
@@ -227,13 +248,13 @@ const CreateEvent = () => {
                     {/* Dropdown options */}
                     {dropdownOpen && (
                       <div className="absolute top-full left-0 w-full mt-2 border bg-white rounded-lg shadow-lg">
-                        {plans.map((plan, index) => (
+                        {plans.map((plan) => (
                           <div
-                            key={index}
+                            key={plan.value}
                             className="p-3 flex justify-between items-center hover:bg-gray-100 cursor-pointer"
                             onClick={() => {
                               setSelectedPlan(plan); // Update selected plan
-                              setFieldValue("plan", plan.lable); // Update Formik field
+                              setFieldValue("plan", plan.value); // Update Formik field
                               setDropdownOpen(false); // Close dropdown
                             }}
                           >
@@ -260,8 +281,18 @@ const CreateEvent = () => {
                   />
                 </div>
               </div>
-
-              {/* More Information */}
+              {/* MORE INFORMATION */}
+              <div className=" w-full    mt-4">
+                <label className="flex  mb-3   font-bold">
+                  More Information
+                </label>
+                <Field
+                  name="moreInfo"
+                  as="textarea"
+                  rows="4"
+                  className="p-3 w-full border rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-[#9747FF]"
+                />
+              </div>
 
               <Button
                 type="submit"
@@ -277,7 +308,7 @@ const CreateEvent = () => {
               <PlanModal
                 isOpen={dialogOpen}
                 onClose={handleCloseDialog}
-                planType={plans}
+                planType={dialogDetails}
               />
             </Form>
           </div>

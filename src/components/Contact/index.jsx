@@ -34,7 +34,7 @@ const Contact = () => {
 
   return (
     <>
-      <div className="container  mx-auto  pt-24 ">
+      <div className="max-w-full  mx-auto  pt-24 ">
         <div>
           {/* Header Section */}
           <h1 className="text-center mx-auto  text-[#9747FF] text-[1.5rem] sm:text-[2rem] lg:text-[2.5rem] font-extrabold leading-tight sm:leading-[2.5rem] lg:leading-[3rem] my-10">
@@ -42,17 +42,17 @@ const Contact = () => {
           </h1>
 
           {/* Content Section */}
-          <div className="flex flex-col sm:flex-row justify-between  2xl:gap-48   items-center  p-4 rounded-md">
+          <div className="flex flex-col md:flex-row justify-between  2xl:gap-48   items-center  p-4 rounded-md">
             {/* FAQ Section */}
-            <div className=" sm:w-[50%] w-[90%]  flex flex-col   rounded-md p-6">
-              <h1 className="text- text-[1rem] sm:text-[2rem] font-extrabold text-[#9747FF] mb-16">
+            <div className=" sm:w-[80%] w-[90%] md:w-[40%] lg:w-[50%]  flex flex-col   rounded-md p-6 md:p-2">
+              <h1 className="text- text-[1rem] sm:text-[2rem] md:text-[1.1rem] font-extrabold text-[#9747FF] mb-16">
                 Frequently Asked Questions (FAQs)
               </h1>
               <div className="max-w-full w-[658px] mx-auto ">
                 <Accordion type="single" collapsible className="space-y-6">
                   {faqItems.map((item, index) => (
                     <AccordionItem key={index} value={`item-${index}`}>
-                      <AccordionTrigger className="text-lg sm:text-xl font-semibold bg-[#E2D0FA] px-2 sm:px-4  ">
+                      <AccordionTrigger className="text-lg sm:text-xl md:text-base font-semibold bg-[#E2D0FA] px-2 sm:px-4  ">
                         {item.question}
                       </AccordionTrigger>
                       <AccordionContent className="text-base sm:text-lg text-gray-600 bg-[#E2D0FA] px-2 sm:px-4 ">
@@ -65,7 +65,7 @@ const Contact = () => {
             </div>
 
             {/* Contact Form Section */}
-            <div className=" = sm:w-[50%] w-[80%] md:mt-24  rounded-md sm:p-6">
+            <div className=" = sm:w-[80%] w-[80%] md:w-[60%] lg:w-[50%] md:mt-24  rounded-md sm:pl-6">
               <ContactForm />
             </div>
           </div>
