@@ -9,7 +9,7 @@ const PlanCard = ({ data }) => {
   const isLogedIn = useSelector((state) => state.auth.status);
 
   return (
-    <div key={data.id} className="w-[80%] md:w-[45%] lg:w-[45%] xl:w-[30%] mx-auto">
+    <div key={data.id} className="w-[60%] md:w-[45%] lg:w-[35%] xl:w-[30%] mx-auto">
       <div className="space-y-6 border-2 bg-[#E2D0FA] border-[#9747FF] p-6 flex flex-col rounded-lg shadow-md">
         <Button className="bg-[#60B0F4] rounded-md w-[70%] sm:w-[60%] mx-auto cursor-default">
           {data.planName}
