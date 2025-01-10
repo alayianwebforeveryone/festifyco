@@ -108,7 +108,7 @@ const CreateEvent = () => {
   });
 
   return (
-    <div className="pt-8 bg-red-500 ">
+    <div className="pt-8  ">
       <Formik
         initialValues={{
           name: "",

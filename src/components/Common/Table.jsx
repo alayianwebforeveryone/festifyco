@@ -74,15 +74,11 @@ const TableComp = ({ type, tableData }) => {
 
   // Show a message if no data is available
   if (!processedData || processedData.length === 0) {
-    return (
-      <div className="text-[24px] mt-48 font-bold text-3xl text-center text-[#9747FF]">
-        No data available
-      </div>
-    );
+   null
   }
 
   return (
-    <div className="bg-[#E7EEF0]   py-6 px-2  xl:px-8 rounded-[22px] xl:mr-8 ">
+    <div className="bg-[#E7EEF0]     py-6 px-2  xl:px-8 rounded-[22px]  ">
       <div className="flex justify-end   top-0 mb-4  pr-8 ">
         <SelectBox type="table" values={filterValue} setSelectType={setSelectType} />
       </div>
@@ -94,8 +90,8 @@ const TableComp = ({ type, tableData }) => {
             <TableHead className="font-bold text-[16px] xl:text-[24px]">Event Name</TableHead>
             <TableHead className="font-bold text-[16px] xl:text-[24px]">Date & Time</TableHead>
             <TableHead className="font-bold text-[16px] xl:text-[24px]">Status</TableHead>
-            {type === "availabelEvents" && (
-              <TableHead className="font-bold text-[24px]">Action</TableHead>
+            {type === "viewEventsData" && (
+              <TableHead className="font-bold text-[16px] xl:text-[24 px]">Action</TableHead>
             )}
           </TableRow>
         </TableHeader>
@@ -121,7 +117,7 @@ const TableComp = ({ type, tableData }) => {
                 >
                   {row.status}
                 </TableCell>
-                {type === "availabelEvents" && (
+                {type === "viewEventsData" && (
                   <TableCell className="xl:text-[18px] text-[14px] ">
                     {!row.isPassed ? (
                       <Button
@@ -129,7 +125,7 @@ const TableComp = ({ type, tableData }) => {
                           setSelectedEvent(row);
                           setShowModal(true);
                         }}
-                        className="bg-[#9747FF] text-white px-4 py-2 rounded-[10px] "
+                        className="bg-[#9747FF] text-white px-2 py-2 rounded-[10px] "
                       >
                         Register
                       </Button>

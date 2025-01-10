@@ -14,7 +14,7 @@ export function DashboardHeader() {
   console.log("Current User:", currentUserEmail);
 
   return (
-    <div className=" fixed top-0   z-20  bg-[#EBE2F5]   ">
+    <div className=" fixed top-0    z-20  bg-[#EBE2F5]   ">
       <div className="flex justify-between  px-8 mb-8 py-4  ">
         <div className="flex flex-col xl:flex-row   xl:gap-8       ">
           <p className="text-[#9747FF] font-bold   text-xl">
@@ -32,7 +32,7 @@ export function DashboardHeader() {
         </Link>
       </div>
 
-      <div className="flex flex-col gap-4 py-6 bg-[#C7B1E2] rounded-[22px] px-6 mr-8  ">
+      <div className="flex flex-col gap-4 py-6 bg-[#C7B1E2] rounded-[22px] px-6 mx-auto ">
         <h1 className="xl:text-[32px] text-[24px] font-bold text-[#005298]">
           Manage Your Events
         </h1>

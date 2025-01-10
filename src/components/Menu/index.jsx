@@ -59,8 +59,8 @@ const Menu = () => {
 
   return (
     <>
-      <nav className="fixed w-full z-10 bg-[#EBE2F5] ">
-        <div className="flex items-center justify-between  lg:justify-between container mx-auto px-6 sm:px-0 md:px-2 py-3">
+      <nav className="fixed w-full z-10 bg-[#EBE2F5]  ">
+        <div className="flex items-center justify-between lg:justify-between container mx-auto px-6 sm:px-0 md:px-2 py-3">
           {/* Logo */}
 
           <Link href="/" className="cursor-pointer">
