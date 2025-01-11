@@ -1,4 +1,4 @@
-import Logout from '@/components/Logout'
+import Logout from '../../../components/Logout'
 import React from 'react'
 
 const LogoutPage = () => {
