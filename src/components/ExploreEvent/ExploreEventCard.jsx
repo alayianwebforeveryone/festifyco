@@ -14,7 +14,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+} from "../../components/ui/alert-dialog";
 import { useSelector } from "react-redux";
 import Button from "../Common/Button";
 import Link from "next/link";
@@ -104,7 +104,7 @@ const ExploreEventCard = ({ eventCardData }) => {
               <>
                 <Button
                   onClick={() => setShowTicketModal(true)}
-                  className=" bg-[#60B0F4] text-white "
+                  className=" text-sm lg:text-lg  bg-[#60B0F4] text-white "
                 >
                   Book Now
                 </Button>

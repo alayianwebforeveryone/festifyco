@@ -1,4 +1,4 @@
-import Button from '@/components/Common/Button';
+import Button from '../../../../components/Common/Button';
 import React from 'react'
 import { TiTick } from 'react-icons/ti';
 

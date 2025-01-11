@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from 'react';
+import React, {  useRef } from 'react';
 import Slider from 'react-slick';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'; // For custom arrows
 import homeBanner from '../../../Assets/Images/homeBanner.png'
@@ -9,7 +9,6 @@ import Link from 'next/link';
 import { useSelector } from 'react-redux';
 
 const ServicesCarousel = () => {
-  const [quotes, setQuotes] = useState([]);
   const sliderRef = useRef(null); // Ref to access the Slider component
   const isLogedIn = useSelector((state) => state.auth.status);
 
@@ -49,7 +48,7 @@ const ServicesCarousel = () => {
   console.log('img', homeBanner);
 
   return (
-    <div className="text-black w-[80%] mx-auto pt-60">
+    <div className="text-black w-[80%] mx-auto pt-12">
       {/* Slick Carousel */}
       <Slider ref={sliderRef} {...settings}>
         {services.map((data, index) => (
@@ -71,8 +70,8 @@ const ServicesCarousel = () => {
               </div>
                 
                  <Link  href={isLogedIn ?'/pages/dashboard/view_events':'/pages/signUp' } className=' flex items-center justify-center'>
-                 <Button className="bg-[#60B0F4] absolute bottom-20 text-white px-4 py-2 mt-4 rounded-lg">
-                   Explore Event
+                 <Button className="bg-[#9747FF] absolute bottom-20 text-white px-4 py-2 mt-4 rounded-lg">
+                   Get Services
                  </Button>
                  </Link>
               

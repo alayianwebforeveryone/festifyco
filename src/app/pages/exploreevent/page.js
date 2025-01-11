@@ -1,4 +1,4 @@
-import ExploreEvent from '@/components/ExploreEvent'
+import ExploreEvent from '../../../components/ExploreEvent'
 import React from 'react'
 
 const ExploreEventPage = () => {

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import authService from "@/app/pages/appwrite/auth";
+import authService from "../../app/pages/appwrite/auth";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -11,7 +11,7 @@ import { CiMenuBurger } from "react-icons/ci";
 import { IoMdClose } from "react-icons/io";
 import Button from "../Common/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "@/app/redux/Slices/authSlice";
+import { login } from "../../app/redux/Slices/authSlice";
 
 const Menu = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -114,7 +114,7 @@ const Menu = () => {
               <Link href="/pages/login" className="cursor-pointer">
                 <Button className=" text-white bg-[#60B0F4]">Login</Button>
               </Link>
-              <Link href="/pages/signUp" className="cursor-pointer">
+              <Link href="/pages/signup" className="cursor-pointer">
                 <Button className="text-white bg-[#9747FF]">Sign up</Button>
               </Link>
             </div>
@@ -123,28 +123,47 @@ const Menu = () => {
 
         {/* Mobile Menu */}
         {showMenu && (
-          <div className="sm:hidden  flex flex-col content-center items-center absolute top-16 left-0 w-full bg-[#EBE2F5] shadow-lg rounded-b-lg">
+          <div className="sm:hidden text-left  pb-8 text-white    flex flex-col   absolute top-16 left-0 w-full bg-[#9747FF] shadow-lg ">
             {navLinks.map((link, index) => (
               <Link
                 key={index}
                 href={link.path}
                 onClick={toggleMenu}
-                className={`block py-3 px-4 text-gray-700 font-medium hover:bg-gray-100 ${
-                  path === link.path ? "bg-gray-200" : ""
+                className={`block py-3 px-4 border-b last:border-b-0 font-lg hover:bg-gray-100 ${
+                  path === link.path ? "  bg-[#60B0F4]" : ""
                 }`}
               >
                 {link.title}
               </Link>
             ))}
 
-            <div className="flex flex-col items-center space-y-3 justify-center py-4">
-              <Link href="/" onClick={toggleMenu}>
-                <Button className=" bg-[#60B0F4]" >Login</Button>
-              </Link>
-              <Link href="/login" onClick={toggleMenu}>
-                <Button className="bg-[#9747FF]" >SignUp</Button>
-              </Link>
-            </div>
+            {isLoggedIn ? (
+              <div className="  flex flex-col  text-xl font-extrabold text-white mt-8 ">
+                <Link href="/pages/logout" className="cursor-pointer  ">
+                  <Button className="  border-2 w-[80%] border-[#60B0F4] text-red-300  ">
+                    Logout
+                  </Button>
+                </Link>
+                <Link href="/pages/dashboard" className="cursor-pointer">
+                  <Button className=" mt-4    border-2 w-[80%] border-[#60B0F4]  bg-[#9747FF]">
+                    Dashboard
+                  </Button>
+                </Link>
+              </div>
+            ) : (
+              <div className="  flex flex-col  text-xl font-extrabold text-white mt-8 ">
+                <Link href="/pages/login" className="cursor-pointer  ">
+                  <Button className="  border-2 w-[80%] border-[#60B0F4] text-red-300  ">
+                    Loign
+                  </Button>
+                </Link>
+                <Link href="/pages/signup" className="cursor-pointer">
+                  <Button className=" mt-4    border-2 w-[80%] border-[#60B0F4]  bg-[#9747FF]">
+                    Signup
+                  </Button>
+                </Link>
+              </div>
+            )}
           </div>
         )}
       </nav>

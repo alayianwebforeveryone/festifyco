@@ -1,4 +1,4 @@
-import PurchasedEvents from "@/components/Dashboard/Purchased Events";
+import PurchasedEvents from "../../../../components/Dashboard/Purchased Events";
 
 
 const RegisteredEventsPage = () =>{

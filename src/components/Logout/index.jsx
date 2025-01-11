@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Button from "../Common/Button";
-import { logout } from "@/app/redux/Slices/authSlice";
+import { logout } from "../../app/redux/Slices/authSlice";
 import { useRouter } from "next/navigation";
 import authService from "../../app/pages/appwrite/auth.js";
 import { useDispatch } from "react-redux";
@@ -29,8 +29,8 @@ const Logout = ({ type }) => {
   return (
     <>
       <div
-        className={` w-[80%] lg:w-[50%]  mx-auto 
-          ${type === "dashboard" ? "pt-36" : "pt-72"}
+        className={` w-[80%] lg:w-[50%]   mx-auto 
+          ${type === "dashboard" ? "pt-36" : "pt-[480px] sm:pt-72"}
           
         }`}
       >

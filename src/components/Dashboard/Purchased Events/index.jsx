@@ -1,8 +1,8 @@
 "use client";
-import TableComp from "@/components/Common/Table";
+import TableComp from "../../../components/Common/Table";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPurchasedServicesData } from "@/app/redux/Slices/userEventSlice";
+import { fetchPurchasedServicesData } from "../../../app/redux/Slices/userEventSlice";
 import TableSkeleton from "./TableSkeleton";
 
 const PurchasedEvents = () => {

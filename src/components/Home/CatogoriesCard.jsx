@@ -32,7 +32,7 @@ const CatogoriesCard = () => {
         <h1 className="text-[#9747FF] text-2xl sm:text-3xl md:text-4xl my-10 text-center font-bold leading-tight">
           Our Event Categories
         </h1>
-        <div className="flex flex-col sm:flex-row  justify-center gap-16 sm:gap-2 md:gap-6  ">
+        <div className="flex flex-col sm:flex-row  justify-center  sm:gap-2 md:gap-16 lg:gap-8  xl:px-32 lg:px-12 ">
           {CateCard.map((card) => (
             <div
               key={card.id}

@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState } from "react";
-import authService from "@/app/pages/appwrite/auth";
+import authService from "../../app/pages/appwrite/auth";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Button from "../Common/Button";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
-import { login } from "@/app/redux/Slices/authSlice";
+import { login } from "../../app/redux/Slices/authSlice";
 import { toast } from "sonner";
 import Link from "next/link";
 

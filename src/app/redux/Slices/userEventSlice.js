@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import createdEventsServices from '../../pages/appwrite/eventServices';
-import availableEventsServices from '@/app/pages/appwrite/availableEvents';
+import availableEventsServices from '../../pages/appwrite/availableEvents';
 
 // purchasedServices
 export const fetchPurchasedServicesData = createAsyncThunk(

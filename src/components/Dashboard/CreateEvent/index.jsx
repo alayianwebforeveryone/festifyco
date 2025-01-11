@@ -3,10 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import Button from "@/components/Common/Button";
+import Button from "../../Common/Button";
 import createdEventsServices from "../../../app/pages/appwrite/eventServices";
-// import {purchaseEvent} from "../../../app/redux/Slices/userEventSlice";
-import { useDispatch } from "react-redux";
 import PlanModal from "./PlanModal";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
@@ -45,7 +43,6 @@ const CreateEvent = () => {
     setDialogDetails("");
   };
 
-  const dispatch = useDispatch();
 
   async function create(values) {
     try {

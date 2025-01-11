@@ -1,4 +1,4 @@
-import { Stats } from "@/components/Dashboard/Stats";
+import { Stats } from "../../../components/Dashboard/Stats";
 
 
 const HomePage = () =>{

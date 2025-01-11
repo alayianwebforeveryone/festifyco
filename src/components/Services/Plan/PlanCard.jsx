@@ -9,8 +9,7 @@ const PlanCard = ({ data }) => {
   const isLogedIn = useSelector((state) => state.auth.status);
 
   return (
-    <div key={data.id} className="w-[80%] md:w-[45%] lg:w-[45%] xl:w-[30%] mx-auto">
-      <div className="space-y-6 border-2 bg-[#E2D0FA] border-[#9747FF] p-6 flex flex-col rounded-lg shadow-md">
+      <div key={data.id}  className="space-y-6 border-2 h-[500px]  md:h-[550px] xl:h-[500px] lg:h-[570]   overflow-hidden bg-[#E2D0FA] border-[#9747FF] p-6 flex flex-col rounded-lg shadow-md">
         <Button className="bg-[#60B0F4] rounded-md w-[70%] sm:w-[60%] mx-auto cursor-default">
           {data.planName}
         </Button>
@@ -59,13 +58,17 @@ const PlanCard = ({ data }) => {
               <TiTick className="text-white" />
             </span>
             <p className="text-sm sm:text-base">{data.food}</p>
+           </div> 
+           <div className="flex items-center gap-2">
             <span className="rounded-full p-1 bg-[#9747FF]">
               <TiTick className="text-white" />
             </span>
             <p className="text-sm sm:text-base">
               Choose {data.Items} items from menu
             </p>
-          </div>
+
+           </div>
+        
         </div>
 
         <Link
@@ -74,12 +77,11 @@ const PlanCard = ({ data }) => {
           }
           className="flex items-center"
         >
-          <Button className="bg-[#60B0F4] text-white w-[60%] sm:w-[50%] lg:w-[40%] mx-auto">
+          <Button className="bg-[#60B0F4] px-0  text-white   lg:w-[60%] mx-auto">
             Book Now
           </Button>
         </Link>
       </div>
-    </div>
   );
 };
 

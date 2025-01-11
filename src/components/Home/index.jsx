@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Button from "../Common/Button";
 import Image from "next/image";
 import homeBanner from "../../../Assets/Images/homeBanner.png";
@@ -7,10 +7,8 @@ import CatogoriesCard from "./CatogoriesCard";
 import QuoteCarousel from "./QuoteCarousel";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import ContactForm from "../Contact/ContactForm";
-
-import authService from "@/app/pages/appwrite/auth";
-import { login, logout } from "@/app/redux/Slices/authSlice";
+import authService from "../../app/pages/appwrite/auth";
+import { login, logout } from "../../app/redux/Slices/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import Contact from "../Contact";
@@ -25,7 +23,6 @@ export const Home = () => {
         dispatch(login(userData));
       } else {
         dispatch(logout());
-
       }
     });
   }, []);
@@ -44,7 +41,7 @@ export const Home = () => {
                 Creating Moments, Crafting Memories
               </h1>
             </div>
-            <p className="text-[15px] text-justify sm:text-left sm:text-[17px] lg:text-[22px] leading-[20px] sm:leading-[20px] md:leading-[25px] lg:leading-[28px]">
+            <p className="text-[15px] text-justify sm:text-left sm:text-[17px] lg:text-[22px] leading-[26px] sm:leading-[26px] md:leading-[30px] lg:leading-[36px]">
               At Testify Co., we turn your vision into reality with seamless
               event planning and unforgettable experiences. From corporate
               gatherings to dreamy weddings, our expert team ensures every
@@ -64,17 +61,16 @@ export const Home = () => {
                   </Button>
                 </Link>
               </div>
-
             ) : (
               <div className="flex items-center justify-center sm:justify-start">
-              <Link href="/pages/signUp">
-                <Button
-                  type="Submit"
-                  className="px-12 text-xl font-bold  py-4 bg-[#9747FF] text-white  rounded-full  mt-4"
-                >
-                  Get Started
-                </Button>
-              </Link>
+                <Link href="/pages/signup">
+                  <Button
+                    type="Submit"
+                    className="px-12 text-xl font-bold  py-4 bg-[#9747FF] text-white  rounded-full  mt-4"
+                  >
+                    Get Started
+                  </Button>
+                </Link>
               </div>
             )}
           </div>

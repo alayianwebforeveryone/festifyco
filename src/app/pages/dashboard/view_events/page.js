@@ -1,4 +1,4 @@
-import ViewEvents from "@/components/Dashboard/View Events";
+import ViewEvents from "../../../../components/Dashboard/View Events";
 
 
 const ViewEventPage = () =>{

@@ -1,4 +1,4 @@
-import CreateEvent from "@/components/Dashboard/CreateEvent";
+import CreateEvent from "../../../../components/Dashboard/CreateEvent";
 
 
 const CreateEventsPage = () =>{

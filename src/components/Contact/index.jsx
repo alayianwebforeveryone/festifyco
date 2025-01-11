@@ -6,8 +6,9 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
+} from "../../components/ui/accordion";
 import ContactForm from "./ContactForm";
+import Heading from "../Common/Heading";
 const Contact = () => {
   const faqItems = [
     {
@@ -37,15 +38,15 @@ const Contact = () => {
       <div className="max-w-full  mx-auto  pt-24 ">
         <div>
           {/* Header Section */}
-          <h1 className="text-center mx-auto  text-[#9747FF] text-[1.5rem] sm:text-[2rem] lg:text-[2.5rem] font-extrabold leading-tight sm:leading-[2.5rem] lg:leading-[3rem] my-10">
-            Let’s Start a Conversation
-          </h1>
+          <div className="px-4 sm:px-24 ">
+            <Heading title="Lets Start Conversation" />
+          </div>
 
           {/* Content Section */}
-          <div className="flex flex-col md:flex-row justify-between  2xl:gap-48   items-center  p-4 rounded-md">
+          <div className="flex flex-col md:flex-row justify-between  2xl:gap-48   items-center md:px-12   xl:px-24 rounded-md">
             {/* FAQ Section */}
             <div className=" sm:w-[80%] w-[90%] md:w-[40%] lg:w-[50%]  flex flex-col   rounded-md p-6 md:p-2">
-              <h1 className="text- text-[1rem] sm:text-[2rem] md:text-[1.1rem] font-extrabold text-[#9747FF] mb-16">
+              <h1 className="text-center text-[1.57rem] sm:text-[2rem] md:text-[1.57rem] font-extrabold text-[#9747FF] mb-16">
                 Frequently Asked Questions (FAQs)
               </h1>
               <div className="max-w-full w-[658px] mx-auto ">

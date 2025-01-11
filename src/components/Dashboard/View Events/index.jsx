@@ -1,8 +1,8 @@
 "use client";
-import TableComp from "@/components/Common/Table";
+import TableComp from "../../../components/Common/Table";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchAvailableServicesData } from "@/app/redux/Slices/userEventSlice";
+import { fetchAvailableServicesData } from "../../../app/redux/Slices/userEventSlice";
 import TableSkeleton from "../Purchased Events/TableSkeleton";
 
 const ViewEvents = () => {
@@ -11,7 +11,6 @@ const ViewEvents = () => {
   
   useEffect(() => {
     const fetchData = async () => {
-      alert("available events")
       setIsLoading(true); // Set isLoading to true before fetching data
       await dispatch(fetchAvailableServicesData());
       setIsLoading(false); // Set isLoading to false after data is fetched
