@@ -54,18 +54,20 @@ const ServicesCarousel = () => {
         {services.map((data, index) => (
           <div key={index} className="relative p-4 flex mx-auto md:p-6">
             <div
-              className="text-center w-full h-[300px] sm:h-[350px] md:h-[388px] bg-black/20 flex flex-col items-center justify-between gap-4 p-4 sm:gap-4 sm:p-6 border-2 border-[#9747FF] rounded-xl"
+              className="text-center w-full h-[300px] sm:h-[350px] md:h-[388px] flex flex-col items-center justify-between gap-4 p-4 sm:gap-4 sm:p-6 border-2 border-[#9747FF] rounded-xl"
               style={{
-                backgroundImage: `url('/images/homeBanner.png')`,
+                backgroundImage: `url('/images/eventmodalbg.jpeg')`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
               }}
             >
+              {/* Dark overlay */}
+             {/* <div className="absolute m-6 inset-0 bg-black/40 rounded-xl"></div> */}
               <div className=' mt-12 space-y-5'>
-                <p className="text-lg  md:text-2xl font-bold">{data.serviceName}</p>
-                <p className="text-sm md:text-base font-semibold px-4 sm:px-6">
-                  - {data.description}
+                <p className="text-lg text-[#ebf0f5] md:text-3xl font-extrabold">{data.serviceName}</p>
+                <p className="text-lg text-white md:text-base font-semibold px-4 sm:px-6">
+                   {data.description}
                 </p>
               </div>
                 

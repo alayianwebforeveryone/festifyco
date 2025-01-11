@@ -12,12 +12,12 @@ import "./globals.css";
 function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`antialiased bg-[#EBE2F5] overflow-x-hidden w-full`}>
+      <body  className={`antialiased bg-[#EBE2F5] overflow-x-hidden w-full min-h-screen flex flex-col`}>
         <Provider store={store}>
           <Menu />
-          <div className=" ">{children}</div>
+          <div className="flex-grow">{children}</div>
           <Toaster />
-          <Footer />
+          <Footer  />
         </Provider>
       </body>
     </html>
