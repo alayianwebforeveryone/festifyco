@@ -24,7 +24,7 @@ const QuoteCarousel = () => {
     speed: 500,
     slidesToShow: 3, // Default for large screens
     slidesToScroll: 1,
-    arrows: true, // Enable arrows
+    arrows: false, // Enable arrows
     responsive: [
       {
         breakpoint: 1024, // For medium screens
