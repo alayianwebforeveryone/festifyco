@@ -1,5 +1,5 @@
 "use client";
-import React, { PureComponent } from "react";
+
 import {
   BarChart,
   Bar,
@@ -20,7 +20,7 @@ const EventBarGraph = ({graphData}) => {
 
   graphData.forEach(eventData=>{
     const year = new Date(eventData.date).getFullYear();
-    // console.log("Year:", year);
+   
     if(!yearCounts[year]){
       yearCounts[year] ={
         "year": year.toString(),
@@ -28,7 +28,7 @@ const EventBarGraph = ({graphData}) => {
       }
     }
     yearCounts[year]["Purchased Event"] += 1;
-    // console.log("Year Counts:",  Object.values(yearCounts));
+
     return Object.values(yearCounts);
   })
 

@@ -2,7 +2,7 @@
 
 "use client";
 import React, { useEffect } from "react";
-import Link from "next/link";
+
 import EventBarGraph from "./EventBarGraph";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchPurchasedServicesData } from "../../../app/redux/Slices/userEventSlice";
@@ -15,7 +15,7 @@ export function Stats() {
   }, [dispatch]);
 
   const purchasedEvents = useSelector((state) => state.events.purchasedServices);
-  console.log("Purchased Events in Stats:", purchasedEvents);
+
 
   const purchasedEventsCount = purchasedEvents ? purchasedEvents.length : 0;
 

@@ -5,6 +5,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Button from "../Common/Button";
 import Link from "next/link";
+import { toast } from "sonner";
 
 const ContactForm = () => {
   const validationSchema = Yup.object().shape({
@@ -39,6 +40,7 @@ const ContactForm = () => {
             console.log(values, "values");
             console.log(values, "form values");
             resetForm();
+            toast("You have successfully submitted contact form");
           }}
         >
           {({ handleSubmit, isValid, dirty }) => (
@@ -55,7 +57,7 @@ const ContactForm = () => {
 
                 <div className="flex w-full flex-col mb-2">
                   <label className="text-[1rem] sm:text-[1.25rem] leading-[1.25rem] sm:leading-[1.5rem] text-left mb-2 font-bold">
-                    Namee
+                    Name
                   </label>
                   <Field name="name">
                     {({ field }) => (
@@ -141,7 +143,7 @@ const ContactForm = () => {
                 </div>
 
                 {/* Submit Button */}
-                <Link href="/">
+              
                   <Button
                     type="submit"
                     disabled={!(isValid && dirty)}
@@ -153,7 +155,7 @@ const ContactForm = () => {
                   >
                     SignUp
                   </Button>
-                </Link>
+               
               </Form>
             </div>
           )}

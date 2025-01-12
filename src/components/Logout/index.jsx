@@ -19,7 +19,7 @@ const Logout = ({ type }) => {
         toast("You  have been logged out successfully");
         dispatch(logout());
         router.push("/");
-        console.log("Logout successfully");
+      
       })
       .catch((error) => {
         console.log("Logout error", error);
@@ -29,8 +29,8 @@ const Logout = ({ type }) => {
   return (
     <>
       <div
-        className={` w-[80%] lg:w-[50%]   mx-auto 
-          ${type === "dashboard" ? "pt-36" : "pt-[480px] sm:pt-72"}
+        className={` w-[80%] lg:w-[50%]   mx-auto  mb-40
+          ${type === "dashboard" ? "pt-36" : "pt-40  sm:pt-72"}
           
         }`}
       >

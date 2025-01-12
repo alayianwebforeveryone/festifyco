@@ -2,7 +2,7 @@
 import React, {  useRef } from 'react';
 import Slider from 'react-slick';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'; // For custom arrows
-import homeBanner from '../../../Assets/Images/homeBanner.png'
+
 import Button from '../Common/Button';
 import { services } from '../../json/event.js'
 import Link from 'next/link';
@@ -45,7 +45,7 @@ const ServicesCarousel = () => {
     sliderRef.current.slickNext(); // Move to the next slide
   };
 
-  console.log('img', homeBanner);
+
 
   return (
     <div className="text-black w-[80%] mx-auto pt-12">
@@ -62,8 +62,7 @@ const ServicesCarousel = () => {
                 backgroundRepeat: 'no-repeat',
               }}
             >
-              {/* Dark overlay */}
-             {/* <div className="absolute m-6 inset-0 bg-black/40 rounded-xl"></div> */}
+         
               <div className=' mt-12 space-y-5'>
                 <p className="text-lg text-[#ebf0f5] md:text-3xl font-extrabold">{data.serviceName}</p>
                 <p className="text-lg text-white md:text-base font-semibold px-4 sm:px-6">

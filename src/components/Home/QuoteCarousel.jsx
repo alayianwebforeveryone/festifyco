@@ -1,5 +1,5 @@
 "use client";
-// components/QuoteCarousel.js
+
 import React, { useState, useEffect, useRef } from 'react';
 import Slider from 'react-slick';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'; // For custom arrows

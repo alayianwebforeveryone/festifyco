@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import Button from "../../Common/Button";
@@ -9,6 +9,7 @@ import PlanModal from "./PlanModal";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { isValidPhoneNumber } from "libphonenumber-js";
+import { toast } from "sonner";
 
 const CreateEvent = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
@@ -46,7 +47,7 @@ const CreateEvent = () => {
 
   async function create(values) {
     try {
-      alert("Event Created Successfully");
+      toast("You have create event  successfully");
       const event = await createdEventsServices.createEvent({
         name: values.name,
         email: values.email,
@@ -61,8 +62,8 @@ const CreateEvent = () => {
         chosePlan: values.plan,
         moreInfo: values.moreInfo,
       });
-      console.log("Event created:", event);
-      // dispatch(purchaseEvent(event));
+   
+    
     } catch (error) {
       console.error("Error creating event:", error);
     }

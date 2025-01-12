@@ -20,7 +20,7 @@ const PurchasedEvents = () => {
   }, [dispatch]);
 
   const purchasedEvents = useSelector((state) => state.events.purchasedServices);
-  console.log("Purchased Events in registered:", purchasedEvents);
+ 
 
   return (
     <div>

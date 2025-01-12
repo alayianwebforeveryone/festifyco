@@ -4,6 +4,7 @@ import Button from "../Common/Button";
 import img1 from "../../../Assets/Images/artExibition.jpg";
 import img2 from "../../../Assets/Images/music.jpg";
 import img3 from "../../../Assets/Images/tech.jpg";
+import Link from "next/link";
 
 const CatogoriesCard = () => {
   const CateCard = [
@@ -50,9 +51,11 @@ const CatogoriesCard = () => {
                 {card.title}
               </h3>
               <div className=" bottom-4 absolute ">
+              <Link href="/pages/exploreevent" className="cursor-pointer">
               <Button className="bg-[#60B0F4]   text-white px-6 py-2 rounded-full">
                 Book Nows
               </Button>
+              </Link>
               </div>
             </divs>
           ))}

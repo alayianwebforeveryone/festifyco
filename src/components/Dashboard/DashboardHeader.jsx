@@ -3,15 +3,15 @@ import * as React from "react";
 import Link from "next/link";
 import Button from "../Common/Button";
 import { useSelector } from "react-redux";
-// import 
+
 
 export function DashboardHeader() {
 
 
   const currentUser = useSelector((state) => state.auth.userData?.name);
-  console.log("Current User:", currentUser);
+
   const currentUserEmail = useSelector((state) => state.auth.userData?.email);
-  console.log("Current User:", currentUserEmail);
+
 
   return (
     <div className=" fixed top-0    z-20  bg-[#EBE2F5]   ">

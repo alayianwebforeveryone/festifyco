@@ -2,7 +2,7 @@
 
 import conf from '../../../conf/conf.js';
 import { Client, Databases, ID, Permission, Role , Query } from "appwrite";
-// import { Permission,  } from "appwrite";
+
 import authService from './auth.js';
 
 export class CreatedEventsServices {

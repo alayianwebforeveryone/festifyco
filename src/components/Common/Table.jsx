@@ -34,15 +34,15 @@ const TableComp = ({ type, tableData }) => {
 
   // Perform the calculation only on the client side
   const filterValue = ["All", "Past", "Upcoming"];
-  console.log("tableData", tableData);
+
 
   useEffect(() => {
     if (tableData && tableData.length > 0) {
       const updatedData = tableData.map((event) => {
-        console.log("event in table map", event.date);
+   
 
         const daysRemaining = calculateDaysRemaining(event.date);
-        console.log("daysRemaining", daysRemaining);
+      
         return {
           ...event,
           status:
@@ -56,16 +56,14 @@ const TableComp = ({ type, tableData }) => {
     }
   }, [tableData]);
 
-  console.log("processedData", processedData);
 
   const filteredData = processedData.filter((row) => {
-    console.log("filterType", selectType);
+
     if (selectType === "Upcoming") return !row.isPassed; // Only upcoming events
     if (selectType === "Past") return row.isPassed; // Only past events
     return true;
   });
 
-  console.log("filteredData", selectType);
 
   const paginatedData = filteredData.slice(
     (currentPage - 1) * rowsPerPage,

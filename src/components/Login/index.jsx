@@ -26,10 +26,10 @@ const Login = () => {
     setError("");
     try {
       const session = await authService.login(data);
-      console.log("session", session);
+ 
       if (session) {
         const userData = await authService.getCurrentUser();
-        console.log("userData outer", userData);
+   
         if (userData) dispatch(authLogin(userData));
         toast("You have been logged in successfully");
         router.push("/");
@@ -158,7 +158,7 @@ const Login = () => {
               <p className="mt-4 text-gray-600">
                 Don't have an account?{" "}
                 <Link
-                  href="/pages/signUp"
+                  href="/pages/signup"
                   className="text-[#9747FF] font-bold underline"
                 >
                   Sign up here

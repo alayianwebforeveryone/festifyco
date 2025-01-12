@@ -1,5 +1,4 @@
 import { Geist, Geist_Mono } from "next/font/google";
-// import "./globals.css";
 import { cn } from "../../../lib/utils";
 import { AppSidebar } from "../../../components/Dashboard/Sidebar";
 import { SidebarProvider, SidebarTrigger } from "../../../components/ui/sidebar"

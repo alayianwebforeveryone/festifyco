@@ -20,7 +20,7 @@ const ViewEvents = () => {
   }, [dispatch]);
 
   const availableEvents = useSelector((state) => state.events.availableEvents);
-  console.log("available Events in view:", availableEvents);
+
 
   return (
     <div>

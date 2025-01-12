@@ -19,7 +19,7 @@ export const Home = () => {
   useEffect(() => {
     authService.getCurrentUser().then((userData) => {
       if (userData) {
-        console.log("get current user data  from home", userData);
+     
         dispatch(login(userData));
       } else {
         dispatch(logout());

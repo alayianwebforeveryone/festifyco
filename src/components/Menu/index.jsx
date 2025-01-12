@@ -140,12 +140,12 @@ const Menu = () => {
             {isLoggedIn ? (
               <div className="  flex flex-col  text-xl font-extrabold text-white mt-8 ">
                 <Link href="/pages/logout" className="cursor-pointer  ">
-                  <Button className="  border-2 w-[80%] border-[#60B0F4] text-red-300  ">
+                  <Button className="  border-2 w-[80%] border-[#60B0F4] text-red-300  " onClick={toggleMenu}>
                     Logout
                   </Button>
                 </Link>
-                <Link href="/pages/dashboard" className="cursor-pointer">
-                  <Button className=" mt-4    border-2 w-[80%] border-[#60B0F4]  bg-[#9747FF]">
+                <Link href="/" className="cursor-pointer">
+                  <Button className=" mt-4    border-2 w-[80%] border-[#60B0F4]  bg-[#9747FF]" onClick={toggleMenu}>
                     Dashboard
                   </Button>
                 </Link>
@@ -153,12 +153,12 @@ const Menu = () => {
             ) : (
               <div className="  flex flex-col  text-xl font-extrabold text-white mt-8 ">
                 <Link href="/pages/login" className="cursor-pointer  ">
-                  <Button className="  border-2 w-[80%] border-[#60B0F4] text-red-300  ">
+                  <Button className="  border-2 w-[80%] border-[#60B0F4] text-red-300  " onClick={toggleMenu}>
                     Loign
                   </Button>
                 </Link>
                 <Link href="/pages/signup" className="cursor-pointer">
-                  <Button className=" mt-4    border-2 w-[80%] border-[#60B0F4]  bg-[#9747FF]">
+                  <Button className=" mt-4    border-2 w-[80%] border-[#60B0F4]  bg-[#9747FF]" onClick={toggleMenu}>
                     Signup
                   </Button>
                 </Link>
