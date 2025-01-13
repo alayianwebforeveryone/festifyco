@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 
 import ServicesCarousel from "./ServicesCarousel";
@@ -5,6 +6,7 @@ import Plan from "./Plan";
 import Heading from "../Common/Heading";
 
 const Services = () => {
+ 
   return (
     <>
       <div className="px-24">

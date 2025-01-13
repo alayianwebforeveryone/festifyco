@@ -11,9 +11,9 @@ const Plan = () => {
            planData.map((data)=>{
 
             return(
-                
+                <div key={data.id}>
                     <PlanCard  data={data} />
-                
+                    </div>
             )
            })
          }
